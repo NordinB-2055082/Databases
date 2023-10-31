@@ -1,5 +1,12 @@
 # Taak Databases
 
-## Klassendiagram 
+## Schema  
 
 [![Klassendiagram](https://mermaid.ink/img/pako:eNqFlG9vmzAQxr-K5ZcTRaEpf4KqvVjb9c06TUvedLI0eXBk1sBGtumWRfnuOwxJMFHXCCn45-PuuccHe1qoEmhOi5obcy_4VvOGyVJoKKxQknzYMOn2yCNvgOyZJPj7pOSWkC2S76Ic0NpqgdAKW4NH2prbSunGgyW8QA2t0gN9kF1DtiA1zKJMoUXbCznWLXh9zy2Qr_g4N9DfT1KsLbedIUwejqqfOgO44eluHJsrl9iNB_pi59JCWvIijLBKmy-gn4GP2qtacUtAWs1lAR8BprhU0uUYNR1VbTDW8MHhqTR75id5bsOz2pFZE2dnJjlm7kx2NrsWPEV3qFHV0HNPUXHmbxrWcNlVmL_ToCdHcFcLdMc_gsKxeUYCDRe1j1pM8VvpizZxXH4opW0_Ap0_XP0klaB9dqGWVEIb-_mERzuYdIPO6CIMGSW3V1fvh8U7XI3T9N-YiZNMTg-a0egi-NGVfzUqmpZ9O250mgx9MEkD2oBGT0t8w53_jNqfgCVpjrcl178Yxb4xjndWrXeyoHnFawMB7doSbR6_CCfacvlNKVxb3Q1Lmu_pH5pHqyhM4iSJ8IqXaZQGdEfzZRZGSZrG0XWSxcniOjkE9K97fhGm2c1qGSXxKlllN1myDCiU_dv1NH6Q-r-jjAe3M6o4_APdPoqe?type=png)](https://mermaid.live/edit#pako:eNqFlG9vmzAQxr-K5ZcTRaEpf4KqvVjb9c06TUvedLI0eXBk1sBGtumWRfnuOwxJMFHXCCn45-PuuccHe1qoEmhOi5obcy_4VvOGyVJoKKxQknzYMOn2yCNvgOyZJPj7pOSWkC2S76Ic0NpqgdAKW4NH2prbSunGgyW8QA2t0gN9kF1DtiA1zKJMoUXbCznWLXh9zy2Qr_g4N9DfT1KsLbedIUwejqqfOgO44eluHJsrl9iNB_pi59JCWvIijLBKmy-gn4GP2qtacUtAWs1lAR8BprhU0uUYNR1VbTDW8MHhqTR75id5bsOz2pFZE2dnJjlm7kx2NrsWPEV3qFHV0HNPUXHmbxrWcNlVmL_ToCdHcFcLdMc_gsKxeUYCDRe1j1pM8VvpizZxXH4opW0_Ap0_XP0klaB9dqGWVEIb-_mERzuYdIPO6CIMGSW3V1fvh8U7XI3T9N-YiZNMTg-a0egi-NGVfzUqmpZ9O250mgx9MEkD2oBGT0t8w53_jNqfgCVpjrcl178Yxb4xjndWrXeyoHnFawMB7doSbR6_CCfacvlNKVxb3Q1Lmu_pH5pHqyhM4iSJ8IqXaZQGdEfzZRZGSZrG0XWSxcniOjkE9K97fhGm2c1qGSXxKlllN1myDCiU_dv1NH6Q-r-jjAe3M6o4_APdPoqe)
+
+
+## Beschrijving van schema
+### Enititeiten
+Om de database voor het Video Game History Foundation uit te werken, maken we gebruik van 5 entiteiten. De eerste entiteit is een game, deze bevat een unieke id, een titel, het platform waarop het spel gespeeld kan gespeeld worden, de maker, het genre, de beschrijving van het spel, de uitgeefdatum en tot slot de status van het spel (uitgeleend, in een museum, verkocht). We gaan er vanuit dat elke game op een locatie ligt in een museum als opslagplaats, dus is het museum de volgende entiteit die gekoppeld is aan de game. Het museum bevat ook een unieke id, een naam, locatie, aantal bezoekers per jaar, kost van toegang voor bezoekers en eventuele donaties. Wanneer we willen weten wat er met een game gebeurd is, vallen we terug op de transactie entiteit, deze bevat het unieke transactie id, de id van de game waarover het gaat, de id van het museum waar de transactie gebeurd is, de datum en het transactie type (aankoop, huur, donatie). Elke transactie gebeurt door een klant en dat is onze volgende entiteit, deze bevat de gegevens van de klant, dus client id, email, wachtwoord, geboortedatum, gender, voor en achternaam. 
+
+### Relatoes tussen entiteiten
