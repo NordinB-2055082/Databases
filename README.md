@@ -1,6 +1,6 @@
 # Taak Databases
 ## Auteurs
-Abdullah Yalvac
+Abdullah Yalvac,
 Nordin Ben-Al-Lal
 
 ## Schema  
