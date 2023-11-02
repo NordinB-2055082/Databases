@@ -1,4 +1,7 @@
 # Taak Databases
+## Auteurs
+Abdullah Yalvac
+Nordin Ben-Al-Lal
 
 ## Schema  
 
