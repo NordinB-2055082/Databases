@@ -1,6 +1,7 @@
 # Taak Databases
 ## Auteurs
 Abdullah Yalvac,
+Luca Briers,
 Nordin Ben-Al-Lal
 
 ## Schema  
