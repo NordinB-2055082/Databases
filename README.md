@@ -25,3 +25,10 @@ Daarnaast bevat elk transactie een game, terwijl niet elk game een onderdeel moe
 Tussen museum en transaction is er ook een 1-op-veel relatie. De transaction entiteit zorgt ervoor dat een client of persoon interactie kan hebben met een museum. Een museum kan meerdere transacties hebben maar een bepaalde transactie heeft slechts betrekking tot één van de musea. Als je bijvoorbeeld Minecraft wil ophalen van Museum X, is dat een specifieke transactie gelinkt aan Museum X. Andersom kan een museum meerdere transacties behandelen wat ons uiteindelijk een 1-op-veel relatie oplevert. 
 
 Client-transaction is dan een 1-op-veel relatie. Interactie met een museum gebeurt aan de hand van een transactie waarvoor we dus het transaction entiteit gebruiken. Elk transactie die plaatsvindt is specifiek aan een client terwijl een client meerdere transacties kan uitvoeren. Hier stelt een client een persoon voor die bijvoorbeeld een game wil checken of het beschikbaar is in een museum. We achten een relatie tussen client-transactie nodig omdat een transactie zelf ook wat aspecten bevat die niet helemaal bij een client zouden passen, waarbij we bij een client eerder focussen op "account" gedeelte van een persoon. Het uitvoeren van een handeling zelf is dus het transition entiteit.
+
+
+### TODO feedback verwerken
+
+ConsoleType entiteit wegdoen en een kolom van maken bvb string
+
+add entiteit gameCopies: de entiteit game wijst naar deze tabel en zo kan je zien hoeveel kopien er zijn
