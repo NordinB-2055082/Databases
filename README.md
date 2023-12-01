@@ -30,3 +30,7 @@ MAAR niet elke transactie hoeft een gameCopy te bevatten, wanneer een client een
 Tot slot hebben we de relatie tussen Museum en Transaction wat een 1 - 1..* relatie is, een museum kan meerdere transacties maken, maar een transactie kan maar met 1 museum gebeuren aangezien we zeggen dat wanneer er gewisseld wordt van museum A naar museum B, museum B een client is in onze transactie met een bepaalde client_id die herkenbaar is. Elke transactie heeft wel minstens 1 museum nodig.
 
 
+### Taak databases todo:
+-data aanmaken
+-museum to museum transactie nog eens bekijken, handiger om vakjes te maken museumIdFrom, museumIdTo en museumIdTo mag null zijn
+
