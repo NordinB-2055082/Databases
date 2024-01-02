@@ -30,16 +30,37 @@ public class ScreenFactory {
     private void switchScreen() {
         switch (screenName){
             case "login":
-                openLoginScreen();
+                showLoginScreen();
                 break;
 
             case "register":
-                openRegisterScreen();
+                showRegisterScreen();
+                break;
+
+            case "base":
+                showBaseScreen();
                 break;
         }
     }
 
-    private void openLoginScreen() {
+    private void showBaseScreen() {
+        try {
+            Stage stage = new Stage();
+            BaseView baseView = new BaseView(stage);
+            BaseController baseController = new BaseController(baseView, employee);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("base.fxml"));
+            fxmlLoader.setController(baseController);
+            Parent root = fxmlLoader.load();
+            baseView.setRoot(root);
+            baseView.start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showLoginScreen() {
         try {
             Stage stage = new Stage();
             Login loginModel = new Login();
@@ -57,7 +78,7 @@ public class ScreenFactory {
         }
     }
 
-    private void openRegisterScreen() {
+    private void showRegisterScreen() {
         try {
             Stage stage = new Stage();
             Register registerModel = new Register();

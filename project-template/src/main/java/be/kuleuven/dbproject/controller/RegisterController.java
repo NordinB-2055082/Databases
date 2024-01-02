@@ -148,7 +148,7 @@ public class RegisterController {
 
             employeeDb.createEmployee(addEmployee);
 
-            new ScreenFactory("home", addEmployee);
+            new ScreenFactory("base", addEmployee);
             view.stop();
 
         } else {

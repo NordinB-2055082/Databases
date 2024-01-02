@@ -95,7 +95,7 @@ public class LoginController {
             showAlert("Warning!", "We hebben nog geen account gevonden met dit email adres, werk jij hier wel?");
         }
         else if(Objects.equals(employee.getEmail(), model.getEmail()) && Objects.equals(employee.getPassword(), model.getPassword())) {
-            new ScreenFactory("home", employee);
+            new ScreenFactory("base", employee);
             view.stop();
         }
         else {
