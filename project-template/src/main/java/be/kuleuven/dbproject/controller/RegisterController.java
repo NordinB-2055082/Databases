@@ -85,20 +85,23 @@ public class RegisterController {
         assert txt_email != null : "fx:id=\"txt_email\" was not injected: check your FXML file 'register.fxml'.";
         assert txt_museumId != null : "fx:id=\"txt_museumId\" was not injected: check your FXML file 'register.fxml'.";
         assert txt_input_museumId != null : "fx:id=\"txt_input_museumId\" was not injected: check your FXML file 'register.fxml'.";
-        assert txt_gender != null : "fx:id=\"txt_gender\" was not injected: check your FXML file 'register.fxml'.";
-        assert txt_input_email != null : "fx:id=\"txt_input_email\" was not injected: check your FXML file 'register.fxml'.";
-        assert txt_input_name != null : "fx:id=\"txt_input_name\" was not injected: check your FXML file 'register.fxml'.";
-        assert txt_input_lastname != null : "fx:id=\"txt_input_lastname\" was not injected: check your FXML file 'register.fxml'.";
         assert txt_name != null : "fx:id=\"txt_name\" was not injected: check your FXML file 'register.fxml'.";
         assert txt_password != null : "fx:id=\"txt_password\" was not injected: check your FXML file 'register.fxml'.";
         assert txt_sign_in != null : "fx:id=\"txt_sign_in\" was not injected: check your FXML file 'register.fxml'.";
         assert txt_lastname != null : "fx:id=\"txt_lastname\" was not injected: check your FXML file 'register.fxml'.";
+        assert txt_gender != null : "fx:id=\"txt_gender\" was not injected: check your FXML file 'register.fxml'.";
+        assert txt_input_email != null : "fx:id=\"txt_input_email\" was not injected: check your FXML file 'register.fxml'.";
+        assert txt_input_name != null : "fx:id=\"txt_input_name\" was not injected: check your FXML file 'register.fxml'.";
+        assert txt_input_lastname != null : "fx:id=\"txt_input_lastname\" was not injected: check your FXML file 'register.fxml'.";
 
         txt_input_name.textProperty().bindBidirectional(model.nameProperty());
         txt_input_lastname.textProperty().bindBidirectional(model.lastnameProperty());
         txt_input_email.textProperty().bindBidirectional(model.emailProperty());
         input_psw.textProperty().bindBidirectional(model.passwordProperty());
         input_gender.valueProperty().bindBidirectional(model.genderProperty());
+        //TODO museum id fixen
+
+
 
         btn_signup.setOnAction(event -> register());
         link_signin.setOnAction(event -> {
@@ -141,7 +144,7 @@ public class RegisterController {
             addEmployee.setEmail(model.getEmail());
             addEmployee.setPassword(model.getPassword());
             addEmployee.setGender(model.getGender());
-            addEmployee.setMuseumId(model.getMuseumId());
+            //addEmployee.setMuseumId(model.getMuseumId());
 
             employeeDb.createEmployee(addEmployee);
 

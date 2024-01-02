@@ -12,7 +12,7 @@
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:VGHFklad.db"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:VGHF.db"/>
             <property name="javax.persistence.jdbc.user" value=""/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.schema-generation.database.action" value=""/>

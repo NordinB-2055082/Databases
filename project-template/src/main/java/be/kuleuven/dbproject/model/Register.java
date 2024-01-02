@@ -9,19 +9,17 @@ public class Register {
     private StringProperty lastname = new SimpleStringProperty("");
     private StringProperty gender = new SimpleStringProperty("");
 
-    private StringProperty museumId = new SimpleStringProperty("");
+    //private LongProperty museumId = new SimpleLongProperty(1);
 
-    public String getMuseumId() {
-        return museumId.get();
-    }
+    //public long getMuseumId() {
+     //   return museumId.get();
+    //}
 
-    public StringProperty museumIdProperty() {
-        return museumId;
-    }
+   // public LongProperty museumIdProperty() {
+    //    return museumId;
+    //}
 
-    public void setMuseumId(String museumId) {
-        this.museumId.set(museumId);
-    }
+    //public void setMuseumId(long museumId) {this.museumId.set(museumId);}
 
     public String getEmail() {
         return email.get();

@@ -11,17 +11,16 @@ import java.util.List;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Employee_GEN")
-    @SequenceGenerator(name = "Employee_GEN", sequenceName = "Employee_SEQ")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employeeId", nullable = false)
     private Long employeeId;
-    @Column(name = "museumId", nullable = false)
-    private String museumId;
+   // @Column(name = "museumId", nullable = false)
+    //private Long museumId = 1L;
 
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "pasword", nullable = false) //Typfout gemaakt in database
     private String password;
 
     @Column(name = "gender", nullable = false)
@@ -34,8 +33,8 @@ public class Employee {
 
 
 
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
-    private Museum museum;
+    //@OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    //private Museum museum;
 
 
 
@@ -47,13 +46,9 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public String getMuseumId() {
-        return museumId;
-    }
+   // public Long getMuseumId() {return museumId; }
 
-    public void setMuseumId(String museumId) {
-        this.museumId = museumId;
-    }
+    //public void setMuseumId(Long museumId) {this.museumId = museumId;}
 
     public String getEmail() {
         return email;
@@ -95,13 +90,11 @@ public class Employee {
         this.lastname = lastname;
     }
 
-    public Museum getMuseum() {
-        return museum;
-    }
+   // public Museum getMuseum() {
+     //   return museum;
+    //}
 
-    public void setMuseum(Museum museum) {
-        this.museum = museum;
-    }
+    //public void setMuseum(Museum museum) {this.museum = museum;}
 
 
     // ToString
@@ -110,7 +103,7 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "employeeId=" + employeeId +
-                ", museumId='" + museumId + '\'' +
+               // ", museumId='" + museumId + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", gender='" + gender + '\'' +
