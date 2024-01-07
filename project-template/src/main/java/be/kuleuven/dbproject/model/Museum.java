@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Museum")
@@ -30,6 +31,9 @@ public class Museum {
     @Column(name = "donations", nullable = false)
     private float donations;
 
+
+    @OneToMany(mappedBy="museum")
+    private List<Employee> EmployeesOfMuseum;
 
 
     // Constructors, getters, setters, and ToString

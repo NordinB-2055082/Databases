@@ -5,13 +5,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//waarom .SEQUENCE: https://thorben-janssen.com/jpa-generate-primary-keys/
+// https://www.youtube.com/watch?v=n_tc6Nc4tfI
+// .IDENTITY niet efficient
 @Entity
 @Table(name = "Employee")
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Employee_gen")
+    @SequenceGenerator(name = "Employee_gen", sequenceName = "Employee_seq")
     @Column(name = "employeeId", nullable = false)
     private Long employeeId;
    // @Column(name = "museumId", nullable = false)
@@ -33,8 +36,9 @@ public class Employee {
 
 
 
-    //@OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
-    //private Museum museum;
+    @ManyToOne
+    @JoinColumn(name="museumId", nullable=false)
+    private Museum museum;
 
 
 
@@ -90,11 +94,11 @@ public class Employee {
         this.lastname = lastname;
     }
 
-   // public Museum getMuseum() {
-     //   return museum;
-    //}
+    public Museum getMuseum() {
+        return museum;
+    }
 
-    //public void setMuseum(Museum museum) {this.museum = museum;}
+    public void setMuseum(Museum museum) {this.museum = museum;}
 
 
     // ToString
