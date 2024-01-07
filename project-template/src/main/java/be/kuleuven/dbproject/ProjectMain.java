@@ -1,17 +1,20 @@
 package be.kuleuven.dbproject;
 
 import be.kuleuven.dbproject.controller.LoginController;
+import be.kuleuven.dbproject.database.ConsoleTypeDb;
 import be.kuleuven.dbproject.database.EmployeeDb;
+import be.kuleuven.dbproject.database.GameDb;
 import be.kuleuven.dbproject.database.MuseumDb;
-import be.kuleuven.dbproject.model.Employee;
-import be.kuleuven.dbproject.model.Login;
-import be.kuleuven.dbproject.model.Museum;
+import be.kuleuven.dbproject.model.*;
 import be.kuleuven.dbproject.view.LoginView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import javax.swing.text.GapContent;
+import java.time.LocalDate;
 
 /**
  * DB Taak 2022-2023: De Vrolijke Zweters
@@ -50,6 +53,8 @@ public class ProjectMain extends Application {
     private void makeSomeRecords(){
         MuseumDb museumDb = new MuseumDb();
         EmployeeDb employeeDb = new EmployeeDb();
+        GameDb gameDb = new GameDb();
+        ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
 
         Museum museumHasselt = new Museum();
         museumHasselt.setLocation("Hasselt");
@@ -97,6 +102,57 @@ public class ProjectMain extends Application {
         employeeBrussel.setEmail("Brussel");
 
         employeeDb.createEmployee(employeeBrussel);
+
+        ConsoleType snes = new ConsoleType();
+        snes.setName("SNES");
+        snes.setManufacturer("Nintendo");
+        snes.setAddressForRepairing("ergens bij nintendo");
+        snes.setReleaseDate(LocalDate.of(1993, 8, 30));
+        //consoleTypeDb.createConsoleType(snes);
+
+        ConsoleType nds = new ConsoleType();
+        nds.setName("Nintendo DS");
+        nds.setManufacturer("Nintendo");
+        nds.setAddressForRepairing("ergens bij nintendo");
+        nds.setReleaseDate(LocalDate.of(2004, 11, 21));
+        //consoleTypeDb.createConsoleType(nds);
+
+        Game marioB = new Game();
+        marioB.setTitle("Super Mario Bros");
+        marioB.setDescription("mooie description");
+        marioB.setGenre("arcadegame");
+        marioB.setAgeClassification(3);
+        marioB.setPrice(60.0F);
+        marioB.setDeveloper("Nintendo");
+        marioB.setReleaseDate(LocalDate.of(1981, 7, 9));
+        //gameDb.createGame(marioB);
+
+
+
+        Game dk = new Game();
+        dk.setTitle("Donkey Kong Country 2: Diddy's Kong Quest");
+        dk.setDescription("mooie description");
+        dk.setGenre("platformer");
+        dk.setAgeClassification(3);
+        dk.setPrice(60.0F);
+        dk.setDeveloper("Rare");
+        dk.setReleaseDate(LocalDate.of(1995, 7, 9));
+
+
+
+        //add games naar lijst consoletype en creeer alles
+        nds.getGamesOfConsoleType().add(marioB);
+        nds.getGamesOfConsoleType().add(dk);
+        snes.getGamesOfConsoleType().add(marioB);
+        snes.getGamesOfConsoleType().add(dk);
+        marioB.getConsoleTypesOfGame().add(snes);
+        marioB.getConsoleTypesOfGame().add(nds);
+
+        gameDb.createGame(dk);
+        gameDb.createGame(marioB);
+        consoleTypeDb.createConsoleType(nds);
+        consoleTypeDb.createConsoleType(snes);
+
 
 
     }

@@ -23,7 +23,7 @@ public class Employee {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "pasword", nullable = false) //Typfout gemaakt in database
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "gender", nullable = false)
@@ -50,9 +50,7 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-   // public Long getMuseumId() {return museumId; }
 
-    //public void setMuseumId(Long museumId) {this.museumId = museumId;}
 
     public String getEmail() {
         return email;

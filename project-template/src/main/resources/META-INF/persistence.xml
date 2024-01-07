@@ -8,6 +8,8 @@
 
         <class>be.kuleuven.dbproject.model.Employee</class>
         <class>be.kuleuven.dbproject.model.Museum</class>
+        <class>be.kuleuven.dbproject.model.Game</class>
+        <class>be.kuleuven.dbproject.model.ConsoleType</class>
 
 
         <properties>

@@ -38,6 +38,7 @@ public class Museum {
 
     // Constructors, getters, setters, and ToString
     public Museum(Long museumId, String name, String location, int visitorsPerYear, float entranceFee, float donations) {
+        EmployeesOfMuseum = new ArrayList<>();
         this.museumId = museumId;
         this.name = name;
         this.location = location;
@@ -47,7 +48,7 @@ public class Museum {
     }
 
     public Museum() {
-
+        EmployeesOfMuseum = new ArrayList<>();
     }
 
     public Long getMuseumId() {
