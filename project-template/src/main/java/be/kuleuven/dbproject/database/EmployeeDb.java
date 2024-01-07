@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.List;
 
+
+//Data acces object design pattern
 public class EmployeeDb {
     private final EntityManager entityManager;
 

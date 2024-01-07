@@ -43,13 +43,16 @@
                 </Text>
                 <TextField fx:id="txt_input_lastname" layoutX="160.0" layoutY="215.0" prefHeight="35.0" prefWidth="300.0" style="-fx-background-color: #F8F9FA; -fx-border-color: #343A40; -fx-border-width: 2; -fx-border-radius: 5;" />
 
-                <Text fx:id="txt_museumId" layoutX="165.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="museum id">
+                <Text fx:id="txt_museum" layoutX="160.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="location museum">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Text>
-                <TextField fx:id="txt_input_museumId" layoutX="160.0" layoutY="280.0" prefHeight="35.0" prefWidth="300.0" style="-fx-background-color: #F8F9FA; -fx-border-color: #343A40; -fx-border-width: 2; -fx-border-radius: 5;" />
-
+                <ChoiceBox fx:id="input_museum" layoutX="160.0" layoutY="290.0" prefHeight="35.0" prefWidth="300.0" style="-fx-background-color: #F8F9FA; -fx-border-color: #343A40; -fx-border-width: 2; -fx-border-radius: 5;">
+                    <String fx:value="Brussel" />
+                    <String fx:value="Hasselt" />
+                    <String fx:value="Antwerpen" />
+                </ChoiceBox>
                 <Text fx:id="txt_email" layoutX="165.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
                     <font>
                         <Font size="24.0" />

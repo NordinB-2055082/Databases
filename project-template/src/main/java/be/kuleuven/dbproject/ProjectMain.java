@@ -69,6 +69,15 @@ public class ProjectMain extends Application {
 
         museumDb.createMuseum(museumBrussel);
 
+        Museum museumAntwerpen = new Museum();
+        museumAntwerpen.setLocation("Antwerpen");
+        museumAntwerpen.setDonations(4000.00F);
+        museumAntwerpen.setName("VGHF Antwerpen");
+        museumAntwerpen.setEntranceFee(5.0F);
+        museumAntwerpen.setVisitorsPerYear(50000);
+
+        museumDb.createMuseum(museumAntwerpen);
+
         Employee employeeHasselt = new Employee();
         employeeHasselt.setName("hasselt");
         employeeHasselt.setLastname("hasselt");

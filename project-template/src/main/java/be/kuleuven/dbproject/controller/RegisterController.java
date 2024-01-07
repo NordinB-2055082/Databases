@@ -5,7 +5,9 @@ import java.util.ResourceBundle;
 
 import be.kuleuven.dbproject.ScreenFactory;
 import be.kuleuven.dbproject.database.EmployeeDb;
+import be.kuleuven.dbproject.database.MuseumDb;
 import be.kuleuven.dbproject.model.Employee;
+import be.kuleuven.dbproject.model.Museum;
 import be.kuleuven.dbproject.model.Register;
 import be.kuleuven.dbproject.view.RegisterView;
 import javafx.fxml.FXML;
@@ -70,9 +72,9 @@ public class RegisterController {
     private Text txt_lastname;
 
     @FXML
-    private TextField txt_input_museumId;
+    private ChoiceBox<String> input_museum;
     @FXML
-    private Text txt_museumId;
+    private Text txt_museum;
     @FXML
     void initialize() {
         assert anchr_background != null : "fx:id=\"anchr_background\" was not injected: check your FXML file 'register.fxml'.";
@@ -83,8 +85,8 @@ public class RegisterController {
         assert input_psw != null : "fx:id=\"input_psw\" was not injected: check your FXML file 'register.fxml'.";
         assert link_signin != null : "fx:id=\"link_signin\" was not injected: check your FXML file 'register.fxml'.";
         assert txt_email != null : "fx:id=\"txt_email\" was not injected: check your FXML file 'register.fxml'.";
-        assert txt_museumId != null : "fx:id=\"txt_museumId\" was not injected: check your FXML file 'register.fxml'.";
-        assert txt_input_museumId != null : "fx:id=\"txt_input_museumId\" was not injected: check your FXML file 'register.fxml'.";
+        assert txt_museum != null : "fx:id=\"txt_museum\" was not injected: check your FXML file 'register.fxml'.";
+        assert input_museum != null : "fx:id=\"txt_input_museumId\" was not injected: check your FXML file 'register.fxml'.";
         assert txt_name != null : "fx:id=\"txt_name\" was not injected: check your FXML file 'register.fxml'.";
         assert txt_password != null : "fx:id=\"txt_password\" was not injected: check your FXML file 'register.fxml'.";
         assert txt_sign_in != null : "fx:id=\"txt_sign_in\" was not injected: check your FXML file 'register.fxml'.";
@@ -99,8 +101,7 @@ public class RegisterController {
         txt_input_email.textProperty().bindBidirectional(model.emailProperty());
         input_psw.textProperty().bindBidirectional(model.passwordProperty());
         input_gender.valueProperty().bindBidirectional(model.genderProperty());
-        //TODO museum id fixen
-
+        input_museum.valueProperty().bindBidirectional(model.museumLocationProperty());
 
 
         btn_signup.setOnAction(event -> register());
@@ -136,7 +137,7 @@ public class RegisterController {
 
     private void register() {
         EmployeeDb employeeDb = new EmployeeDb();
-
+        MuseumDb museumDb = new MuseumDb();
         if (employeeDb.findEmployeeByEmail(model.getEmail()) == null) {
             Employee addEmployee = new Employee();
             addEmployee.setName(model.getName());
@@ -144,7 +145,9 @@ public class RegisterController {
             addEmployee.setEmail(model.getEmail());
             addEmployee.setPassword(model.getPassword());
             addEmployee.setGender(model.getGender());
-            //addEmployee.setMuseumId(model.getMuseumId());
+
+            Museum museum = museumDb.findMuseumByLocation(model.getMuseumLocation());
+            addEmployee.setMuseum(museum);
 
             employeeDb.createEmployee(addEmployee);
 

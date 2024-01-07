@@ -26,6 +26,20 @@ public class MuseumDb {
         }
     }
 
+    public Museum findMuseumByLocation(String museumLocation) {
+        var criteriaBuilder = entityManager.getCriteriaBuilder();
+        var query = criteriaBuilder.createQuery(Museum.class);
+        var root = query.from(Museum.class);
+
+        query.where(criteriaBuilder.equal(root.get("location"), museumLocation));
+
+        try {
+            return entityManager.createQuery(query).getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+
+    }
     public void createMuseum(Museum museum) {
         entityManager.getTransaction().begin();
         entityManager.persist(museum);
@@ -43,4 +57,6 @@ public class MuseumDb {
         entityManager.remove(museum);
         entityManager.getTransaction().commit();
     }
+
+
 }
