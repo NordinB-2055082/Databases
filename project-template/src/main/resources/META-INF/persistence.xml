@@ -10,6 +10,7 @@
         <class>be.kuleuven.dbproject.model.Museum</class>
         <class>be.kuleuven.dbproject.model.Game</class>
         <class>be.kuleuven.dbproject.model.ConsoleType</class>
+        <class>be.kuleuven.dbproject.model.GameCopy</class>
 
 
         <properties>

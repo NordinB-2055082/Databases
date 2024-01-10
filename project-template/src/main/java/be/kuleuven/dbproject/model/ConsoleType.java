@@ -24,13 +24,16 @@ public class ConsoleType {
     private String addressForRepairing;
     @Column(name = "releaseDate", nullable = false)
     private LocalDate releaseDate;
-
+/*
    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "Game_ConsoleType",
             joinColumns = { @JoinColumn(name = "consoleTypeId") },
             inverseJoinColumns = { @JoinColumn(name = "gameId") }
     )
+    private List<Game> gamesOfConsoleType;
+*/
+    @ManyToMany(mappedBy = "consoleTypesOfGame", cascade = CascadeType.MERGE)
     private List<Game> gamesOfConsoleType;
 
 

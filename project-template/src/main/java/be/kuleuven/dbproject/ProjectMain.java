@@ -1,10 +1,7 @@
 package be.kuleuven.dbproject;
 
 import be.kuleuven.dbproject.controller.LoginController;
-import be.kuleuven.dbproject.database.ConsoleTypeDb;
-import be.kuleuven.dbproject.database.EmployeeDb;
-import be.kuleuven.dbproject.database.GameDb;
-import be.kuleuven.dbproject.database.MuseumDb;
+import be.kuleuven.dbproject.database.*;
 import be.kuleuven.dbproject.model.*;
 import be.kuleuven.dbproject.view.LoginView;
 import javafx.application.Application;
@@ -55,6 +52,7 @@ public class ProjectMain extends Application {
         EmployeeDb employeeDb = new EmployeeDb();
         GameDb gameDb = new GameDb();
         ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
+        GameCopyDb gameCopyDb = new GameCopyDb();
 
         Museum museumHasselt = new Museum();
         museumHasselt.setLocation("Hasselt");
@@ -154,7 +152,19 @@ public class ProjectMain extends Application {
         System.out.println("ConsoleTypesOfGame: " + marioB.getConsoleTypesOfGame() );
         System.out.println("GamesOfConsoleType: " + nds.getGamesOfConsoleType() );
 
+        GameCopy dkCopy = new GameCopy();
+        dkCopy.setGame(dk);
+        dkCopy.setMuseum(museumHasselt);
+        gameCopyDb.createGameCopy(dkCopy);
 
+        museumHasselt.getGameCopiesOfMuseum().add(dkCopy);
+
+        GameCopy dkCopyAntwerpen = new GameCopy();
+        dkCopyAntwerpen.setGame(dk);
+        dkCopyAntwerpen.setMuseum(museumAntwerpen);
+        gameCopyDb.createGameCopy(dkCopyAntwerpen);
+
+        System.out.println("gameCopies van hasselt" + museumHasselt.getGameCopiesOfMuseum());
 
 
 

@@ -33,13 +33,16 @@ public class Museum {
 
 
     @OneToMany(mappedBy="museum")
-    private List<Employee> EmployeesOfMuseum;
+    private List<Employee> employeesOfMuseum;
+
+    @OneToMany(mappedBy = "museum")
+    private List<GameCopy> gameCopiesOfMuseum;
 
 
     // Constructors, getters, setters, and ToString
-    public Museum(Long museumId, String name, String location, int visitorsPerYear, float entranceFee, float donations) {
-        EmployeesOfMuseum = new ArrayList<>();
-        this.museumId = museumId;
+    public Museum(String name, String location, int visitorsPerYear, float entranceFee, float donations) {
+        gameCopiesOfMuseum = new ArrayList<>();
+        employeesOfMuseum = new ArrayList<>();
         this.name = name;
         this.location = location;
         this.visitorsPerYear = visitorsPerYear;
@@ -48,7 +51,20 @@ public class Museum {
     }
 
     public Museum() {
-        EmployeesOfMuseum = new ArrayList<>();
+        gameCopiesOfMuseum = new ArrayList<>();
+        employeesOfMuseum = new ArrayList<>();
+    }
+
+    public List<Employee> getEmployeesOfMuseum() {
+        return employeesOfMuseum;
+    }
+
+    public List<GameCopy> getGameCopiesOfMuseum() {
+        return gameCopiesOfMuseum;
+    }
+
+    public void setGameCopiesOfMuseum(List<GameCopy> gameCopiesOfMuseum) {
+        this.gameCopiesOfMuseum = gameCopiesOfMuseum;
     }
 
     public Long getMuseumId() {
