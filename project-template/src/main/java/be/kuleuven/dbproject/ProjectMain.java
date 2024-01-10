@@ -53,6 +53,7 @@ public class ProjectMain extends Application {
         GameDb gameDb = new GameDb();
         ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
         GameCopyDb gameCopyDb = new GameCopyDb();
+        ClientDb clientDb = new ClientDb();
 
         Museum museumHasselt = new Museum();
         museumHasselt.setLocation("Hasselt");
@@ -165,6 +166,26 @@ public class ProjectMain extends Application {
         gameCopyDb.createGameCopy(dkCopyAntwerpen);
 
         System.out.println("gameCopies van hasselt" + museumHasselt.getGameCopiesOfMuseum());
+
+        Client klant = new Client();
+        klant.setName("Laurens");
+        klant.setLastname("blablabla");
+        klant.setEmail("test@gmail.com");
+        klant.setGender("M");
+        klant.setPassword("Geheim");
+        klant.setBirthdate(LocalDate.of(2002, 1, 25));
+        clientDb.createClient(klant);
+
+        Client klant2 = new Client();
+        klant2.setName("Laura");
+        klant2.setLastname("blablabla");
+        klant2.setEmail("test@gmail.com");
+        klant2.setGender("V");
+        klant2.setPassword("Geheim");
+        klant2.setBirthdate(LocalDate.of(2001, 2, 3));
+        clientDb.createClient(klant2);
+
+
 
 
 
