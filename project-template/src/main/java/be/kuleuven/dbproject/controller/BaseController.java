@@ -44,7 +44,7 @@ public class BaseController {
     void initialize(){
         assert tableAllGames != null : "fx:id=\"tableAllGames\" was not injected: check your FXML file 'base.fxml'.";
 
-        btnAllGames.setOnAction(e-> { new ScreenFactory("allGames", employeeLoggedIn);});
+
 
         showGames();
         btnLogOut.setOnAction(e -> {
