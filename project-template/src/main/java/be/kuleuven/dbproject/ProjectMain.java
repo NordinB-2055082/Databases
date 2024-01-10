@@ -138,7 +138,10 @@ public class ProjectMain extends Application {
         dk.setDeveloper("Rare");
         dk.setReleaseDate(LocalDate.of(1995, 7, 9));
 
-
+        gameDb.createGame(dk);
+        gameDb.createGame(marioB);
+        consoleTypeDb.createConsoleType(nds);
+        consoleTypeDb.createConsoleType(snes);
 
         //add games naar lijst consoletype en creeer alles
         nds.getGamesOfConsoleType().add(marioB);
@@ -148,10 +151,10 @@ public class ProjectMain extends Application {
         marioB.getConsoleTypesOfGame().add(snes);
         marioB.getConsoleTypesOfGame().add(nds);
 
-        gameDb.createGame(dk);
-        gameDb.createGame(marioB);
-        consoleTypeDb.createConsoleType(nds);
-        consoleTypeDb.createConsoleType(snes);
+        System.out.println("ConsoleTypesOfGame: " + marioB.getConsoleTypesOfGame() );
+        System.out.println("GamesOfConsoleType: " + nds.getGamesOfConsoleType() );
+
+
 
 
 

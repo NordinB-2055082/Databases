@@ -8,14 +8,16 @@
 
         <class>be.kuleuven.dbproject.model.Employee</class>
         <class>be.kuleuven.dbproject.model.Museum</class>
+        <class>be.kuleuven.dbproject.model.Game</class>
+        <class>be.kuleuven.dbproject.model.ConsoleType</class>
 
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:VGHFklad.db"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:test.sqlite"/>
             <property name="javax.persistence.jdbc.user" value=""/>
             <property name="javax.persistence.jdbc.password" value=""/>
-            <property name="javax.persistence.schema-generation.database.action" value=""/>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLiteDialect" />
             <property name="hibernate.connection.autocommit" value="true"/>

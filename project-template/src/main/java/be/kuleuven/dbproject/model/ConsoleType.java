@@ -25,7 +25,7 @@ public class ConsoleType {
     @Column(name = "releaseDate", nullable = false)
     private LocalDate releaseDate;
 
-   @ManyToMany(cascade = CascadeType.ALL)
+   @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "Game_ConsoleType",
             joinColumns = { @JoinColumn(name = "consoleTypeId") },
