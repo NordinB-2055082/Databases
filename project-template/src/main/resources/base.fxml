@@ -20,15 +20,28 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <Text layoutX="294.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Your App">
+        <Text layoutX="75.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO VGHF">
             <font>
                 <Font size="32.0" />
             </font>
         </Text>
-        <Button fx:id="btnLogOut" layoutX="724.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: #343A40; -fx-border-radius: 5px;" text="Logout" textFill="#f8f9fa">
+        <Button fx:id="btnLogOut" layoutX="724.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #343A40; -fx-border-radius: 5px;" text="Logout" textFill="#f8f9fa">
             <font>
                 <Font size="14.0" />
             </font>
         </Button>
+      <Button fx:id="btnAllGames" layoutX="75.0" layoutY="526.0" mnemonicParsing="false" text="All games " />
+      <TableView fx:id="tableAllGames" layoutX="75.0" layoutY="376.0" prefHeight="139.0" prefWidth="486.0">
+        <columns>
+          <TableColumn fx:id="TableTitle" prefWidth="286.0" text="Title" />
+          <TableColumn fx:id="TableGenre" prefWidth="90.0" text="Genre" />
+            <TableColumn fx:id="TableAge" prefWidth="56.0" text="Age" />
+            <TableColumn fx:id="TablePrice" prefWidth="53.0" text="Price" />
+        </columns>
+      </TableView>
+      <Text layoutX="75.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All the games in the entire collection of our community" wrappingWidth="354.13671875">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
     </children>
 </AnchorPane>

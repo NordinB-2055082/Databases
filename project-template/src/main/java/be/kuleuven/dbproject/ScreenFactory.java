@@ -40,8 +40,31 @@ public class ScreenFactory {
             case "base":
                 showBaseScreen();
                 break;
+
+            case "allGames":
+                showAllGames();
+                break;
         }
     }
+
+    private void showAllGames() {/*
+        try {
+            Stage stage = new Stage();
+            AllGamesView allGamesView = new AllGamesView(stage);
+            AllGamesController allGamesController = new AllGamesController(allGamesView, employee);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("allGames.fxml"));
+            fxmlLoader.setController(allGamesController);
+            Parent root = fxmlLoader.load();
+            allGamesView.setRoot(root);
+            allGamesView.start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+*/
+    }
+
 
     private void showBaseScreen() {
         try {
