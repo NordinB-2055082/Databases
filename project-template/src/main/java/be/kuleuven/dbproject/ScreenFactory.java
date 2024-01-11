@@ -57,7 +57,6 @@ public class ScreenFactory {
             Parent root = fxmlLoader.load();
             baseView.setRoot(root);
             baseView.start();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

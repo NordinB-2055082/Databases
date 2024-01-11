@@ -20,6 +20,7 @@ public class BaseView extends Stage {
     public void setRoot(Parent root) {
         scene = new Scene(root);
         stage.setScene(scene);
+
     }
 
 }

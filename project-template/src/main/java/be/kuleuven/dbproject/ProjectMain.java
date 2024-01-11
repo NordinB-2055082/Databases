@@ -82,13 +82,14 @@ public class ProjectMain extends Application {
 
         museumDb.createMuseum(museumAntwerpen);
 
+        //NOG AANPASSEN NAAR HASSELT IPV A
         Employee employeeHasselt = new Employee();
-        employeeHasselt.setName("hasselt");
-        employeeHasselt.setLastname("hasselt");
-        employeeHasselt.setPassword("hasselt");
+        employeeHasselt.setName("a");
+        employeeHasselt.setLastname("a");
+        employeeHasselt.setPassword("a");
         employeeHasselt.setMuseum(museumHasselt);
         employeeHasselt.setGender("M");
-        employeeHasselt.setEmail("hasselt");
+        employeeHasselt.setEmail("a");
 
         employeeDb.createEmployee(employeeHasselt);
 

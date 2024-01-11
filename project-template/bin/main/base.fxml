@@ -25,9 +25,6 @@
                 <Font size="32.0" />
             </font>
         </Text>
-          <Button fx:id="btnMakeDonation" layoutX="586.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #343A40; -fx-border-radius: 5px;" text="Make Donation" textFill="WHITE">
-
-          </Button>
         <Button fx:id="btnLogOut" layoutX="724.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #343A40; -fx-border-radius: 5px;" text="Logout" textFill="#f8f9fa">
             <font>
                 <Font size="14.0" />
@@ -46,5 +43,6 @@
          <font>
             <Font size="18.0" />
          </font></Text>
+      <Button fx:id="btnDonation" layoutX="619.0" layoutY="36.0" mnemonicParsing="false" text="Donation" />
     </children>
 </AnchorPane>
