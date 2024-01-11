@@ -13,17 +13,19 @@ import javafx.stage.Stage;
 import java.io.IOException;
 public class ScreenFactory {
     private String screenName;
+    private Stage stage;
     private Employee employee;
 
     public ScreenFactory(String screenName) {
         this.screenName = screenName;
-
+        stage = new Stage();
         switchScreen();
     }
 
     public ScreenFactory(String screenName, Employee employee) {
         this.screenName = screenName;
         this.employee = employee;
+        stage = new Stage();
         switchScreen();
     }
 
@@ -41,14 +43,15 @@ public class ScreenFactory {
                 showBaseScreen();
                 break;
 
-
+            case "gameInfo":
+                showGameInfoScreen();
+                break;
         }
     }
 
 
     private void showBaseScreen() {
         try {
-            Stage stage = new Stage();
             BaseView baseView = new BaseView(stage);
             BaseController baseController = new BaseController(baseView, employee);
 
@@ -65,7 +68,6 @@ public class ScreenFactory {
 
     private void showLoginScreen() {
         try {
-            Stage stage = new Stage();
             Login loginModel = new Login();
             LoginView loginView = new LoginView(stage, loginModel);
             LoginController loginController = new LoginController(loginModel, loginView);
@@ -83,7 +85,6 @@ public class ScreenFactory {
 
     private void showRegisterScreen() {
         try {
-            Stage stage = new Stage();
             Register registerModel = new Register();
             RegisterView registerView = new RegisterView(stage, registerModel);
             RegisterController registerController = new RegisterController(registerModel, registerView);
@@ -93,6 +94,23 @@ public class ScreenFactory {
             Parent root = fxmlLoader.load();
             registerView.setRoot(root);
             registerView.start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showGameInfoScreen(){
+        try {
+            GameInfo gameInfoModel = new GameInfo();
+            GameInfoView gameInfoView = new GameInfoView(stage, gameInfoModel);
+            GameInfoController gameInfoController = new GameInfoController(gameInfoModel, gameInfoView, employee);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("gameInfo.fxml"));
+            fxmlLoader.setController(gameInfoController);
+            Parent root = fxmlLoader.load();
+            gameInfoView.setRoot(root);
+            gameInfoView.start();
 
         } catch (IOException e) {
             e.printStackTrace();
