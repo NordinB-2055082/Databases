@@ -54,11 +54,12 @@ public class BaseController {
            view.stop();
         });
         btnGameSelection.setOnAction(e -> {
-            //TODO: get game from selection and pass it on
-            new ScreenFactory("gameInfo", employeeLoggedIn);
-            view.stop();
+            Game selectedGame = tableAllGames.getSelectionModel().getSelectedItem();
+            if(selectedGame != null){
+                new ScreenFactory("gameInfo", employeeLoggedIn, selectedGame);
+                view.stop();
+            }
         });
-
     }
 
     private void showGames() {

@@ -15,6 +15,7 @@ public class ScreenFactory {
     private String screenName;
     private Stage stage;
     private Employee employee;
+    private Game selectedGame;
 
     public ScreenFactory(String screenName) {
         this.screenName = screenName;
@@ -25,6 +26,14 @@ public class ScreenFactory {
     public ScreenFactory(String screenName, Employee employee) {
         this.screenName = screenName;
         this.employee = employee;
+        stage = new Stage();
+        switchScreen();
+    }
+
+    public ScreenFactory(String screenName, Employee employee, Game selectedGame) {
+        this.screenName = screenName;
+        this.employee = employee;
+        this.selectedGame = selectedGame;   //Als tijd over is, een betere manier vinden om dit door te geven
         stage = new Stage();
         switchScreen();
     }
@@ -104,7 +113,7 @@ public class ScreenFactory {
         try {
             GameInfo gameInfoModel = new GameInfo();
             GameInfoView gameInfoView = new GameInfoView(stage, gameInfoModel);
-            GameInfoController gameInfoController = new GameInfoController(gameInfoModel, gameInfoView, employee);
+            GameInfoController gameInfoController = new GameInfoController(gameInfoModel, gameInfoView, selectedGame);
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("gameInfo.fxml"));
             fxmlLoader.setController(gameInfoController);
