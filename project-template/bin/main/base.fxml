@@ -25,12 +25,17 @@
                 <Font size="32.0" />
             </font>
         </Text>
+          <Button fx:id="btnMakeDonation" layoutX="586.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #343A40; -fx-border-radius: 5px;" text="Make Donation" textFill="WHITE">
+             <font>
+                <Font size="14.0" />
+             </font>
+          </Button>
         <Button fx:id="btnLogOut" layoutX="724.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #343A40; -fx-border-radius: 5px;" text="Logout" textFill="#f8f9fa">
             <font>
                 <Font size="14.0" />
             </font>
         </Button>
-      <Button fx:id="btnAllGames" layoutX="75.0" layoutY="526.0" mnemonicParsing="false" text="All games " />
+        <Button fx:id="btnAllGames" layoutX="75.0" layoutY="526.0" mnemonicParsing="false" text="All games " />
       <TableView fx:id="tableAllGames" layoutX="75.0" layoutY="376.0" prefHeight="139.0" prefWidth="486.0">
         <columns>
           <TableColumn fx:id="TableTitle" prefWidth="286.0" text="Title" />
@@ -43,5 +48,6 @@
          <font>
             <Font size="18.0" />
          </font></Text>
+
     </children>
 </AnchorPane>
