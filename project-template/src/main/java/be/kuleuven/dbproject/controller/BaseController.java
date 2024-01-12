@@ -53,7 +53,7 @@ public class BaseController {
 
         btnDonation.setOnAction(e -> {
             new ScreenFactory("donation", employeeLoggedIn);
-            view.stop();
+            //view.stop();
         });
     }
 

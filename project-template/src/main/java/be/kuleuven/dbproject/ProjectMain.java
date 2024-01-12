@@ -151,8 +151,8 @@ public class ProjectMain extends Application {
         marioB.getConsoleTypesOfGame().add(snes);
         marioB.getConsoleTypesOfGame().add(nds);
 
-        System.out.println("ConsoleTypesOfGame: " + marioB.getConsoleTypesOfGame() );
-        System.out.println("GamesOfConsoleType: " + nds.getGamesOfConsoleType() );
+        System.out.println("ConsoleTypesOfGame: " + marioB.getConsoleTypesOfGame());
+        System.out.println("GamesOfConsoleType: " + nds.getGamesOfConsoleType());
 
         GameCopy dkCopy = new GameCopy();
         dkCopy.setGame(dk);

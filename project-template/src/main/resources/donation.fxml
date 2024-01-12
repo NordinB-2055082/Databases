@@ -10,6 +10,6 @@
       <TextField fx:id="textFieldDonation" layoutX="248.0" layoutY="188.0" />
       <Text fx:id="textDonation" layoutX="225.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter an amount to make a donation" />
       <TextField fx:id="textFieldDonationsAmount" layoutX="437.0" layoutY="14.0" />
-      <Button fx:id="btnGoBack" layoutX="29.0" layoutY="14.0" mnemonicParsing="false" text="Go back" />
+      <TextField fx:id="textFieldInfo" editable="false" layoutX="11.0" layoutY="14.0" prefHeight="25.0" prefWidth="409.0" text="Click on the cross on the right of this screen to go back to the main page" />
    </children>
 </AnchorPane>

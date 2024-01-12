@@ -47,35 +47,37 @@ public class DonationController{
     private Button btnMakeADonation;
     @FXML
     private TextField textFieldDonationsAmount;
-    @FXML
-    private Button btnGoBack;
+    /*@FXML
+    private Button btnGoBack;*/
     @FXML
     void initialize(){
         assert textFieldDonation != null : "fx:id=\"textDonation\" was not injected: check your FXML file 'donation.fxml'.";
-        float don;
+        float donationNr;
 
         try{
-            don = employeeLoggedIn.getMuseum().getDonations();
+            donationNr = employeeLoggedIn.getMuseum().getDonations();
         }
         catch (Exception e){
-            don = 6789;
+            donationNr = 6789;
         }
-        textFieldDonationsAmount.setText(Float.toString(don));
+        textFieldDonationsAmount.setText(Float.toString(donationNr));
 
         btnMakeADonation.setOnAction(e -> {
 
             registerDonation();
             textFieldDonation.setText("");
-        });
-        btnGoBack.setOnAction(e-> {
-            new ScreenFactory("base");
             view.stop();
-        });
-    }
 
+
+        });
+        /*btnGoBack.setOnAction(e-> {
+            new ScreenFactory("base");
+        });*/
+    }
+    MuseumDb museumDb = new MuseumDb();
+    private Museum model;
     private DonationView view;
     private Employee employeeLoggedIn;
-    private Museum model;
 
     public DonationController(Museum model, DonationView view, Employee employeeLoggedIn){
         this.model = model;
@@ -84,26 +86,37 @@ public class DonationController{
     }
     private void registerDonation(){
         EmployeeDb employeeDb = new EmployeeDb();
-        MuseumDb museumDb = new MuseumDb();
         Museum museum = employeeLoggedIn.getMuseum();
 
         String ingevoerdeDonatie = textFieldDonation.getText();
         Float flDonatie = Float.valueOf(ingevoerdeDonatie);
-        museum.setDonations(museum.getDonations() + flDonatie);
-        museumDb.updateMuseum(museum);
-        textFieldDonationsAmount.setText(String.valueOf(museum.getDonations()));
-
+        if(flDonatie < 0){
+            showAlert("Warning","Voer een geldig getal in aub!");
+            //textFieldDonation.setText("");
+        }
+        else{
+            museum.setDonations(museum.getDonations() + flDonatie);
+            museumDb.updateMuseum(museum);
+            textFieldDonationsAmount.setText(String.valueOf(museum.getDonations()));
+            showThankYouAlert("Thank you for your donation",
+                    "Bedankt voor uw donatie. Dankzij uw donatie kunnen wij de beste service blijven geven!" +
+                            " \n \n-" + museum.getName());
+        }
     }
-    /*public void makeDonation(){
-        MuseumDb museumDb = new MuseumDb();
-        Museum museum = museumDb.findMuseumByLocation(model.getMuseumLocation());
-        if(museumDb.find)
-    }*/
+    private void showAlert(String title, String content) {
+        var alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 
+    private void showThankYouAlert(String title, String content) {
+        var alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(title);
+        alert.setContentText(content);
+        alert.show();
+    }
 
-
-    /*public DonationController(Museum model, DonationView view){
-        this.model = model;
-        this.view = view;
-    }*/
 }
