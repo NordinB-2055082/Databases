@@ -40,11 +40,30 @@ public class ScreenFactory {
             case "base":
                 showBaseScreen();
                 break;
-
+            case "donation":
+                showDonationScreen();
 
         }
     }
+    private void showDonationScreen() {
+        try{
+            Stage stage = new Stage();
+            Museum model = new Museum();
 
+            DonationView donationView = new DonationView(stage);
+            DonationController donationController = new DonationController(model, donationView, employee);
+            //DonationController donationController = new DonationController(donationView, employee);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("donation.fxml"));
+            fxmlLoader.setController(donationController);
+            Parent root = fxmlLoader.load();
+            donationView.setRoot(root);
+            donationView.start();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 
     private void showBaseScreen() {
         try {

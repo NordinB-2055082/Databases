@@ -26,7 +26,7 @@ public class BaseController {
     @FXML
     private Button btnAllGames;
     @FXML
-    private Button btnDonation = new Button();
+    private Button btnDonation;
     @FXML
     private TableView<Game> tableAllGames;
 
@@ -49,6 +49,11 @@ public class BaseController {
         btnLogOut.setOnAction(e -> {
            new ScreenFactory("login", employeeLoggedIn);
            view.stop();
+        });
+
+        btnDonation.setOnAction(e -> {
+            new ScreenFactory("donation", employeeLoggedIn);
+            view.stop();
         });
     }
 
@@ -75,6 +80,4 @@ public class BaseController {
         this.view = view;
         this.employeeLoggedIn = employeeLoggedIn;
     }
-
-
 }

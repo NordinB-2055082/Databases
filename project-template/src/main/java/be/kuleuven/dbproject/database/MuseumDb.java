@@ -40,6 +40,7 @@ public class MuseumDb {
         }
 
     }
+
     public void createMuseum(Museum museum) {
         entityManager.getTransaction().begin();
         entityManager.persist(museum);
