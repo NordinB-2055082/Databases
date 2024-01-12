@@ -3,11 +3,13 @@ package be.kuleuven.dbproject.view;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-public class BaseView extends Stage {
+public class DonationView extends Stage {
 
     private Stage stage;
     private Scene scene;
-    public BaseView(Stage stage) {this.stage = stage;}
+    public DonationView(Stage stage){
+        this.stage = stage;
+    }
 
     public void start() {
         stage.setTitle("VGHF Museum");
@@ -22,5 +24,4 @@ public class BaseView extends Stage {
         stage.setScene(scene);
 
     }
-
 }

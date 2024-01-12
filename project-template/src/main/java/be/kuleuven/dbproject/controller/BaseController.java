@@ -25,7 +25,8 @@ public class BaseController {
     private Button btnLogOut;
     @FXML
     private Button btnAllGames;
-
+    @FXML
+    private Button btnDonation;
     @FXML
     private TableView<Game> tableAllGames;
 
@@ -44,14 +45,16 @@ public class BaseController {
     void initialize(){
         assert tableAllGames != null : "fx:id=\"tableAllGames\" was not injected: check your FXML file 'base.fxml'.";
 
-
-
         showGames();
         btnLogOut.setOnAction(e -> {
            new ScreenFactory("login", employeeLoggedIn);
            view.stop();
         });
 
+        btnDonation.setOnAction(e -> {
+            new ScreenFactory("donation", employeeLoggedIn);
+            //view.stop();
+        });
     }
 
     private void showGames() {
@@ -77,6 +80,4 @@ public class BaseController {
         this.view = view;
         this.employeeLoggedIn = employeeLoggedIn;
     }
-
-
 }

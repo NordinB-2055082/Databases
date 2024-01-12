@@ -43,6 +43,20 @@ public class EmployeeDb {
         }
     }
 
+    /*public Employee findEmployeeByMuseum(String museum){
+        var criteriaBuilder = entityManager.getCriteriaBuilder();
+        var query = criteriaBuilder.createQuery(Employee.class); // SELECT .... FROM Employee
+        var root = query.from(Employee.class); // SELECT *
+
+        query.where(criteriaBuilder.equal(root.get("museum"), museum));
+
+        try {
+            return entityManager.createQuery(query).getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }*/
+
     public Employee findEmployeeByEmail(String email) {
         var criteriaBuilder = entityManager.getCriteriaBuilder();
         var query = criteriaBuilder.createQuery(Employee.class); // SELECT .... FROM Employee
