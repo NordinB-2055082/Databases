@@ -14,6 +14,7 @@ import java.io.IOException;
 public class ScreenFactory {
     private String screenName;
     private Employee employee;
+    private Game selectedGame;
 
     public ScreenFactory(String screenName) {
         this.screenName = screenName;
@@ -24,6 +25,13 @@ public class ScreenFactory {
     public ScreenFactory(String screenName, Employee employee) {
         this.screenName = screenName;
         this.employee = employee;
+        switchScreen();
+    }
+
+    public ScreenFactory(String screenName, Employee employee, Game selectedGame) {
+        this.screenName = screenName;
+        this.employee = employee;
+        this.selectedGame = selectedGame;   //Als tijd over is, een betere manier vinden om dit door te geven
         switchScreen();
     }
 
@@ -42,6 +50,9 @@ public class ScreenFactory {
                 break;
             case "donation":
                 showDonationScreen();
+            case "gameInfo":
+                showGameInfoScreen();
+                break;
 
         }
     }
@@ -116,6 +127,25 @@ public class ScreenFactory {
             e.printStackTrace();
         }
     }
+
+    private void showGameInfoScreen(){
+        try {
+            Stage stage = new Stage();
+            GameInfo gameInfoModel = new GameInfo();
+            GameInfoView gameInfoView = new GameInfoView(stage, gameInfoModel);
+            GameInfoController gameInfoController = new GameInfoController(gameInfoModel, gameInfoView, selectedGame);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("GameInfo.fxml"));
+            fxmlLoader.setController(gameInfoController);
+            Parent root = fxmlLoader.load();
+            gameInfoView.setRoot(root);
+            gameInfoView.start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
 
 

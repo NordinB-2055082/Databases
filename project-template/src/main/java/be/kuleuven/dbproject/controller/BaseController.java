@@ -42,6 +42,8 @@ public class BaseController {
     @FXML
     private TableColumn<Game, Float> TablePrice;
     @FXML
+    private Button btnGameSelection;
+    @FXML
     void initialize(){
         assert tableAllGames != null : "fx:id=\"tableAllGames\" was not injected: check your FXML file 'base.fxml'.";
 
@@ -54,6 +56,14 @@ public class BaseController {
         btnDonation.setOnAction(e -> {
             new ScreenFactory("donation", employeeLoggedIn);
             //view.stop();
+        });
+
+        btnGameSelection.setOnAction(e -> {
+            Game selectedGame = tableAllGames.getSelectionModel().getSelectedItem();
+            if(selectedGame != null){
+                new ScreenFactory("gameInfo", employeeLoggedIn, selectedGame);
+                view.stop();
+            }
         });
     }
 
