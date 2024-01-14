@@ -150,6 +150,7 @@ public class ProjectMain extends Application {
         snes.getGamesOfConsoleType().add(dk);
         marioB.getConsoleTypesOfGame().add(snes);
         marioB.getConsoleTypesOfGame().add(nds);
+        gameDb.updateGame(marioB);
 
         System.out.println("ConsoleTypesOfGame: " + marioB.getConsoleTypesOfGame());
         System.out.println("GamesOfConsoleType: " + nds.getGamesOfConsoleType());

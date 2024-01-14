@@ -3,7 +3,6 @@ package be.kuleuven.dbproject.database;
 import be.kuleuven.dbproject.EntityManagerProvider;
 import be.kuleuven.dbproject.model.ConsoleType;
 import be.kuleuven.dbproject.model.Employee;
-import be.kuleuven.dbproject.model.Game;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -29,7 +28,7 @@ public class ConsoleTypeDb {
         }
     }
 
-    public List<ConsoleType> findAllConsoleTypes() {
+    public List<ConsoleType> getAllConsoleTypes() {
         var criteriaBuilder = entityManager.getCriteriaBuilder();
         var query = criteriaBuilder.createQuery(ConsoleType.class);
         var root = query.from(ConsoleType.class);

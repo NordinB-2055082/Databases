@@ -9,6 +9,13 @@
         <TextArea fx:id="gameDescription" editable="false" layoutX="29.0" layoutY="235.0" prefHeight="89.0" prefWidth="540.0" text="Gamedescription here" />
         <Label fx:id="gameDescriptionLabel" layoutX="29.0" layoutY="219.0" text="Description" />
         <Button fx:id="btnBack" layoutX="77.0" layoutY="342.0" mnemonicParsing="false" text="&lt; Back" />
-        <VBox fx:id="dataVBox" layoutX="27.0" layoutY="35.0" prefHeight="170.0" prefWidth="540.0" />
+        <VBox fx:id="dataVBox" layoutX="27.0" layoutY="35.0" prefHeight="170.0" prefWidth="312.0" />
+      <TableView fx:id="GameCopyTable" layoutX="340.0" layoutY="35.0" prefHeight="170.0" prefWidth="227.0">
+        <columns>
+          <TableColumn fx:id="TableLocation" prefWidth="75.0" text="Locatie" />
+          <TableColumn fx:id="TableConsole" prefWidth="75.0" text="Console" />
+          <TableColumn fx:id="TableStatus" prefWidth="75.0" text="Status" />
+        </columns>
+      </TableView>
     </children>
 </AnchorPane>
