@@ -62,7 +62,7 @@ public class BaseController {
             Game selectedGame = tableAllGames.getSelectionModel().getSelectedItem();
             if(selectedGame != null){
                 new ScreenFactory("gameInfo", employeeLoggedIn, selectedGame);
-                view.stop();
+                //view.stop();
             }
         });
     }
