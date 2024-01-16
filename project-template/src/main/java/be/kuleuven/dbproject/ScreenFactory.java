@@ -53,9 +53,31 @@ public class ScreenFactory {
             case "gameInfo":
                 showGameInfoScreen();
                 break;
+            case "addGame":
+                showAddGameScreen();
+                break;
 
         }
     }
+
+    private void showAddGameScreen() {
+        try {
+            Stage stage = new Stage();
+
+            AddGameView addgameview = new AddGameView(stage);
+            AddGameController gameController = new AddGameController(addgameview, employee);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("addGame.fxml"));
+            fxmlLoader.setController(gameController);
+            Parent root = fxmlLoader.load();
+            addgameview.setRoot(root);
+            addgameview.start();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
     private void showDonationScreen() {
         try{
             Stage stage = new Stage();

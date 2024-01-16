@@ -44,6 +44,7 @@
             <Font size="18.0" />
          </font></Text>
       <Button fx:id="btnDonation" layoutX="639.0" layoutY="36.0" mnemonicParsing="false" text="Donate" />
-      <Button fx:id="btnGameSelection" layoutX="470.0" layoutY="526.0" mnemonicParsing="false" text="View game" />
+      <Button fx:id="btnGameSelection" layoutX="372.0" layoutY="526.0" mnemonicParsing="false" text="View game" />
+      <Button fx:id="btnAdd" layoutX="476.0" layoutY="526.0" mnemonicParsing="false" text="Add game" />
     </children>
 </AnchorPane>

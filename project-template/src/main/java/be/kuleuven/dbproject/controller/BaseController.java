@@ -44,6 +44,8 @@ public class BaseController {
     @FXML
     private Button btnGameSelection;
     @FXML
+    private Button btnAdd;
+    @FXML
     void initialize(){
         assert tableAllGames != null : "fx:id=\"tableAllGames\" was not injected: check your FXML file 'base.fxml'.";
 
@@ -64,6 +66,11 @@ public class BaseController {
                 new ScreenFactory("gameInfo", employeeLoggedIn, selectedGame);
                 //view.stop();
             }
+        });
+
+        btnAdd.setOnAction(e -> {
+            new ScreenFactory("addGame", employeeLoggedIn);
+            view.stop();
         });
     }
 
