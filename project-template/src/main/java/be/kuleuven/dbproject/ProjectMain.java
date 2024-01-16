@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 
 import javax.swing.text.GapContent;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * DB Taak 2022-2023: De Vrolijke Zweters
@@ -54,6 +56,7 @@ public class ProjectMain extends Application {
         ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
         GameCopyDb gameCopyDb = new GameCopyDb();
         ClientDb clientDb = new ClientDb();
+        TransactionDb transactionDb = new TransactionDb();
 
         Museum museumHasselt = new Museum();
         museumHasselt.setLocation("Hasselt");
@@ -158,6 +161,7 @@ public class ProjectMain extends Application {
         GameCopy dkCopy = new GameCopy();
         dkCopy.setGame(dk);
         dkCopy.setMuseum(museumHasselt);
+        dkCopy.setStatus(Status.AVAILABLE);
         gameCopyDb.createGameCopy(dkCopy);
 
         museumHasselt.getGameCopiesOfMuseum().add(dkCopy);
@@ -165,7 +169,10 @@ public class ProjectMain extends Application {
         GameCopy dkCopyAntwerpen = new GameCopy();
         dkCopyAntwerpen.setGame(dk);
         dkCopyAntwerpen.setMuseum(museumAntwerpen);
+        dkCopyAntwerpen.setStatus(Status.AVAILABLE);
         gameCopyDb.createGameCopy(dkCopyAntwerpen);
+
+
 
         System.out.println("gameCopies van hasselt" + museumHasselt.getGameCopiesOfMuseum());
 
@@ -188,8 +195,21 @@ public class ProjectMain extends Application {
         clientDb.createClient(klant2);
 
 
+        GameCopy dkTest = new GameCopy();
+        dkTest.setGame(dk);
+        dkTest.setMuseum(museumBrussel);
+        dkTest.setStatus(Status.LENT_OUT);
+        gameCopyDb.createGameCopy(dkTest);
 
+        /*Transaction uitleenTest = new Transaction();
 
-
+        List<GameCopy> gameCopiesList = new ArrayList<>();
+        gameCopiesList.add(dkTest);
+        gameCopiesList.add(dkCopy);
+        uitleenTest.setDate(LocalDate.of(2023, 1, 11));
+        uitleenTest.setClient(klant);
+        uitleenTest.setGameCopiesInTransaction(gameCopiesList);
+        transactionDb.createTransaction(uitleenTest);
+        */
     }
 }

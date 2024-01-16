@@ -40,7 +40,7 @@ public class GameInfoController {
             //ADD LOANING ACTION HERE
         });
         btnBack.setOnAction(e -> {
-            new ScreenFactory("base");
+            //new ScreenFactory("base");
             view.stop();
         });
     }
