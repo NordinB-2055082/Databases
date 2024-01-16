@@ -2,6 +2,8 @@ package be.kuleuven.dbproject.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table(name = "GameCopy")
 public class GameCopy {
@@ -11,6 +13,10 @@ public class GameCopy {
     @Column(name = "gameCopyId", nullable = false)
     private Long gameCopyId;
 
+    @Column(name = "status", nullable = false)
+    private Status status;
+
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "gameId", nullable = false)
     private Game game;
@@ -19,13 +25,34 @@ public class GameCopy {
     @JoinColumn(name = "museumId", nullable = false)
     private Museum museum;
 
-    public GameCopy() {
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, optional = true)
+    @JoinColumn(name = "transactionId", nullable = true)
+    private Transaction transaction;
 
+    public GameCopy() {
+        this.status = Status.AVAILABLE;
     }
 
-    public GameCopy(Game game, Museum museum) {
+    public GameCopy(Game game, Museum museum, Status status) {
         this.game = game;
         this.museum = museum;
+        this.status = Status.AVAILABLE;
+    }
+
+    public Transaction getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(Transaction transaction) {
+        this.transaction = transaction;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Long getGameCopyId() {

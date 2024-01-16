@@ -2,6 +2,8 @@ package be.kuleuven.dbproject.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Client")
@@ -28,6 +30,9 @@ public class Client {
     @Column(name = "lastname", nullable = false)
     private String lastname;
 
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<Transaction> transactionsOfClient;
+
     public Client(String email, String password, LocalDate birthdate, String gender, String name, String lastname) {
         this.email = email;
         this.password = password;
@@ -35,10 +40,19 @@ public class Client {
         this.gender = gender;
         this.name = name;
         this.lastname = lastname;
+        transactionsOfClient = new ArrayList<>();
     }
 
     public Client() {
+        transactionsOfClient = new ArrayList<>();
+    }
 
+    public List<Transaction> getTransactionsOfClient() {
+        return transactionsOfClient;
+    }
+
+    public void setTransactionsOfClient(List<Transaction> transactionsOfClient) {
+        this.transactionsOfClient = transactionsOfClient;
     }
 
     public String getEmail() {
