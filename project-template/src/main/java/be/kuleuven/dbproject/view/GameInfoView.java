@@ -8,11 +8,9 @@ import javafx.scene.Parent;
 public class GameInfoView extends Stage {
     private Stage stage;
     private Scene scene;
-    private GameInfo model;
 
-    public GameInfoView(Stage stage, GameInfo model){
+    public GameInfoView(Stage stage){
         this.stage = stage;
-        this.model = model;
     }
 
     public void start(){

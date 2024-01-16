@@ -2,10 +2,10 @@ package be.kuleuven.dbproject.controller;
 
 import be.kuleuven.dbproject.ScreenFactory;
 import be.kuleuven.dbproject.database.ConsoleTypeDb;
+import be.kuleuven.dbproject.database.GameCopyDb;
 import be.kuleuven.dbproject.database.GameDb;
-import be.kuleuven.dbproject.model.ConsoleType;
-import be.kuleuven.dbproject.model.Employee;
-import be.kuleuven.dbproject.model.Game;
+import be.kuleuven.dbproject.database.TransactionDb;
+import be.kuleuven.dbproject.model.*;
 import be.kuleuven.dbproject.view.AddGameView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,12 +43,12 @@ public class AddGameController {
     void initialize(){
         loadSelector();
         btnCancel.setOnAction(e -> {
-            new ScreenFactory("base");
+            new ScreenFactory("base", employee);
             view.stop();
         });
         btnAddGame.setOnAction(e -> {
             addGame();
-            new ScreenFactory("base");
+            new ScreenFactory("base", employee);
             view.stop();
         });
     }
@@ -80,17 +80,38 @@ public class AddGameController {
 
     private void addGame(){
         GameDb gameDb = new GameDb();
+        Game game;
+        // check if game already exists, else adds game with new information
+        try{
+            game = gameDb.findGameByTitle(FieldTitle.getText()).get(0);
+        }
+        catch(IndexOutOfBoundsException e){
+            game = new Game();
+            game.setTitle(FieldTitle.getText());
+            game.setDescription(FieldDescription.getText());
+            game.setGenre(FieldGenre.getText());
+            game.setDeveloper(FieldDeveloper.getText());
+            game.setPrice(Float.parseFloat(FieldPrice.getText()));
+            game.setAgeClassification(Integer.parseInt(FieldAge.getText()));
+            game.setReleaseDate(ReleaseDatePicker.getValue());
+            gameDb.createGame(game);
+        }
 
-        Game game = new Game();
-        //game.setGameId(gameDb.getHighestID()+1);
-        System.out.println("ooooohhhhh"+gameDb.getHighestID()+1);
-        game.setTitle(FieldTitle.getText());
-        game.setDescription(FieldDescription.getText());
-        game.setGenre(FieldGenre.getText());
-        game.setDeveloper(FieldDeveloper.getText());
-        game.setPrice(Float.parseFloat(FieldPrice.getText()));
-        game.setAgeClassification(Integer.parseInt(FieldAge.getText()));
-        game.setReleaseDate(ReleaseDatePicker.getValue());
-        gameDb.createGame(game);
+        TransactionDb transactionDb = new TransactionDb();
+        Transaction transaction = new Transaction();
+
+        //Create Gamecopy
+        GameCopyDb gamecopyDb = new GameCopyDb();
+        GameCopy gamecopy = new GameCopy();
+        gamecopy.setGame(game);
+        gamecopy.setMuseum(employee.getMuseum());
+        gamecopy.setStatus(Status.AVAILABLE);
+        gamecopy.setTransaction(transaction);
+        //add to DB
+        //transactionDb.createTransaction(transaction);
+        gamecopyDb.createGameCopy(gamecopy);
+
+
     }
+
 }

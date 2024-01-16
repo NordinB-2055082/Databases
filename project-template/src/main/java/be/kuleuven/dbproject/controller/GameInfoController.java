@@ -68,12 +68,10 @@ public class GameInfoController {
 
     }
 
-    private final GameInfo model;
     private final GameInfoView view;
     private Game selectedGame;
 
-    public GameInfoController(GameInfo model, GameInfoView view, Game selectedGame) {
-        this.model = model;
+    public GameInfoController(GameInfoView view, Game selectedGame) {
         this.view = view;
         this.selectedGame = selectedGame;
     }

@@ -63,7 +63,6 @@ public class ScreenFactory {
     private void showAddGameScreen() {
         try {
             Stage stage = new Stage();
-
             AddGameView addgameview = new AddGameView(stage);
             AddGameController gameController = new AddGameController(addgameview, employee);
 
@@ -103,7 +102,6 @@ public class ScreenFactory {
             Stage stage = new Stage();
             BaseView baseView = new BaseView(stage);
             BaseController baseController = new BaseController(baseView, employee);
-
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("base.fxml"));
             fxmlLoader.setController(baseController);
             Parent root = fxmlLoader.load();
@@ -153,9 +151,8 @@ public class ScreenFactory {
     private void showGameInfoScreen(){
         try {
             Stage stage = new Stage();
-            GameInfo gameInfoModel = new GameInfo();
-            GameInfoView gameInfoView = new GameInfoView(stage, gameInfoModel);
-            GameInfoController gameInfoController = new GameInfoController(gameInfoModel, gameInfoView, selectedGame);
+            GameInfoView gameInfoView = new GameInfoView(stage);
+            GameInfoController gameInfoController = new GameInfoController(gameInfoView, selectedGame);
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("GameInfo.fxml"));
             fxmlLoader.setController(gameInfoController);
