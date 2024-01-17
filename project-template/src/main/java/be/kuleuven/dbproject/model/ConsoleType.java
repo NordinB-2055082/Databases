@@ -96,7 +96,7 @@ public class ConsoleType {
 
     public List<Game> getGamesOfConsoleType() {
         return gamesOfConsoleType;
-    } //TODO: fix this
+    }
 
     public void setGamesOfConsoleType(List<Game> gamesOfConsoleType) {
         this.gamesOfConsoleType = gamesOfConsoleType;
