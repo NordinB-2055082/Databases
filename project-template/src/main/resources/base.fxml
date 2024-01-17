@@ -30,7 +30,6 @@
                 <Font size="14.0" />
             </font>
         </Button>
-      <Button fx:id="btnAllGames" layoutX="75.0" layoutY="526.0" mnemonicParsing="false" text="All games " />
       <TableView fx:id="tableAllGames" layoutX="75.0" layoutY="376.0" prefHeight="139.0" prefWidth="486.0">
         <columns>
           <TableColumn fx:id="TableTitle" prefWidth="286.0" text="Title" />
@@ -44,7 +43,7 @@
             <Font size="18.0" />
          </font></Text>
       <Button fx:id="btnDonation" layoutX="639.0" layoutY="36.0" mnemonicParsing="false" text="Donate" />
-      <Button fx:id="btnGameSelection" layoutX="372.0" layoutY="526.0" mnemonicParsing="false" text="View game" />
+      <Button fx:id="btnGameSelection" layoutX="75.0" layoutY="526.0" mnemonicParsing="false" text="View game" />
       <Button fx:id="btnAdd" layoutX="476.0" layoutY="526.0" mnemonicParsing="false" text="Add game" />
     </children>
 </AnchorPane>

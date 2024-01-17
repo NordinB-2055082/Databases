@@ -6,6 +6,7 @@ import be.kuleuven.dbproject.model.Transaction;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.RollbackException;
 
 public class TransactionDb {
     private final EntityManager entityManager;
@@ -32,7 +33,19 @@ public class TransactionDb {
     public void createTransaction(Transaction transaction) {
         entityManager.getTransaction().begin();
         entityManager.persist(transaction);
-        entityManager.getTransaction().commit();
+        try{
+            entityManager.getTransaction().commit();
+        }
+        catch(RollbackException e){
+            e.printStackTrace();
+            Throwable cause = e.getCause();
+            while (cause != null) {
+                System.err.println("Cause R: " + cause);
+                cause = cause.getCause();
+            }
+        }
+
+
     }
 
     public void updateMuseum(Transaction transaction) {

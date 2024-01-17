@@ -56,7 +56,9 @@ public class ScreenFactory {
             case "addGame":
                 showAddGameScreen();
                 break;
-
+            case "console":
+                showConsoleScreen();
+                break;
         }
     }
 
@@ -159,6 +161,23 @@ public class ScreenFactory {
             Parent root = fxmlLoader.load();
             gameInfoView.setRoot(root);
             gameInfoView.start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showConsoleScreen(){
+        try {
+            Stage stage = new Stage();
+            ConsoleView consoleView = new ConsoleView(stage);
+            ConsoleController consoleController = new ConsoleController(consoleView, employee);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Console.fxml"));
+            fxmlLoader.setController(consoleController);
+            Parent root = fxmlLoader.load();
+            consoleView.setRoot(root);
+            consoleView.start();
 
         } catch (IOException e) {
             e.printStackTrace();

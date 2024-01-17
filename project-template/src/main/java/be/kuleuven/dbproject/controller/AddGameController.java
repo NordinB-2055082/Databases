@@ -1,20 +1,16 @@
 package be.kuleuven.dbproject.controller;
 
 import be.kuleuven.dbproject.ScreenFactory;
-import be.kuleuven.dbproject.database.ConsoleTypeDb;
-import be.kuleuven.dbproject.database.GameCopyDb;
-import be.kuleuven.dbproject.database.GameDb;
-import be.kuleuven.dbproject.database.TransactionDb;
+import be.kuleuven.dbproject.database.*;
 import be.kuleuven.dbproject.model.*;
 import be.kuleuven.dbproject.view.AddGameView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.StringConverter;
 
-import java.util.List;
+import java.time.LocalDate;
 
 public class AddGameController {
 
@@ -35,7 +31,11 @@ public class AddGameController {
     @javafx.fxml.FXML
     private TextField FieldPrice;
     @javafx.fxml.FXML
+    private TextField FieldMail;
+    @javafx.fxml.FXML
     private Button btnAddGame;
+    @FXML
+    private Button btnAddConsole;
     @FXML
     private Button btnCancel;
 
@@ -49,6 +49,10 @@ public class AddGameController {
         btnAddGame.setOnAction(e -> {
             addGame();
             new ScreenFactory("base", employee);
+            view.stop();
+        });
+        btnAddConsole.setOnAction(e -> {
+            new ScreenFactory("console", employee);
             view.stop();
         });
     }
@@ -97,8 +101,12 @@ public class AddGameController {
             gameDb.createGame(game);
         }
 
+        ClientDb clientDb = new ClientDb();
+
         TransactionDb transactionDb = new TransactionDb();
         Transaction transaction = new Transaction();
+        transaction.setClient(clientDb.findClientByEmail(FieldMail.getText()));
+        transaction.setDate(LocalDate.now());
 
         //Create Gamecopy
         GameCopyDb gamecopyDb = new GameCopyDb();
@@ -107,9 +115,14 @@ public class AddGameController {
         gamecopy.setMuseum(employee.getMuseum());
         gamecopy.setStatus(Status.AVAILABLE);
         gamecopy.setTransaction(transaction);
+
+        transaction.getGameCopiesInTransaction().add(gamecopy);
+        //System.out.println(transaction.getGameCopiesInTransaction().get(0));
         //add to DB
-        //transactionDb.createTransaction(transaction);
+        transactionDb.createTransaction(transaction);
         gamecopyDb.createGameCopy(gamecopy);
+
+        //TODO: probleem met onetomany constraint oplossen
 
 
     }

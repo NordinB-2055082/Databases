@@ -188,7 +188,7 @@ public class ProjectMain extends Application {
         Client klant2 = new Client();
         klant2.setName("Laura");
         klant2.setLastname("blablabla");
-        klant2.setEmail("test@gmail.com");
+        klant2.setEmail("test2@gmail.com");
         klant2.setGender("V");
         klant2.setPassword("Geheim");
         klant2.setBirthdate(LocalDate.of(2001, 2, 3));

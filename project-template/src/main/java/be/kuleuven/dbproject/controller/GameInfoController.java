@@ -4,6 +4,8 @@ import be.kuleuven.dbproject.ScreenFactory;
 import be.kuleuven.dbproject.database.GameCopyDb;
 import be.kuleuven.dbproject.model.*;
 import be.kuleuven.dbproject.view.GameInfoView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,11 +27,9 @@ public class GameInfoController {
     @FXML
     private VBox dataVBox;
     @FXML
-    private TableView GameCopyTable;
+    private TableView<GameCopy> GameCopyTable;
     @FXML
     private TableColumn TableLocation;
-    @FXML
-    private TableColumn TableConsole;
     @FXML
     private TableColumn TableStatus;
     @FXML
@@ -37,7 +37,7 @@ public class GameInfoController {
 
         showGameInfo();
         btnLoan.setOnAction(e -> {
-            //ADD LOANING ACTION HERE
+            loanGame();
         });
         btnBack.setOnAction(e -> {
             //new ScreenFactory("base");
@@ -66,6 +66,16 @@ public class GameInfoController {
 
         gameDescription.setText(selectedGame.getDescription());
 
+        //show gamecopy location and status
+        GameCopyDb gameCopyDb = new GameCopyDb();
+        List<GameCopy> gamecopies = gameCopyDb.findGameCopyByGame(selectedGame);
+        ObservableList<GameCopy> data = FXCollections.observableArrayList();
+        TableLocation.setCellValueFactory(new PropertyValueFactory<GameCopy, String>("museum"));
+        TableStatus.setCellValueFactory(new PropertyValueFactory<GameCopy, Status>("status"));
+
+        data.addAll(gamecopies);
+
+        GameCopyTable.setItems(data);
     }
 
     private final GameInfoView view;
@@ -80,5 +90,12 @@ public class GameInfoController {
         GameCopyDb gameCopyDb = new GameCopyDb();
         List<GameCopy> gamecopies = gameCopyDb.findGameCopyByTitle(title);
         return gamecopies;
+    }
+
+    private void loanGame(){
+        GameCopyDb gameCopyDb = new GameCopyDb();
+        GameCopy selectedGame = GameCopyTable.getSelectionModel().getSelectedItem();
+        selectedGame.setStatus(Status.LENT_OUT);
+        gameCopyDb.updateGameCopy(selectedGame);
     }
 }

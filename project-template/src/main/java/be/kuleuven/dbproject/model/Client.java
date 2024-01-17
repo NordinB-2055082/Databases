@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Client")
-public class Client {
+public class Client implements User{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Client_gen")
     @SequenceGenerator(name = "Client_gen", sequenceName = "Client_seq")

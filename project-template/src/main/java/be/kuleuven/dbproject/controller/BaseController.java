@@ -24,8 +24,6 @@ public class BaseController {
     @FXML
     private Button btnLogOut;
     @FXML
-    private Button btnAllGames;
-    @FXML
     private Button btnDonation;
     @FXML
     private TableView<Game> tableAllGames;

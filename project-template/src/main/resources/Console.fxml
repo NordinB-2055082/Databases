@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="238.0" prefWidth="316.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btnAdd" layoutX="201.0" layoutY="194.0" mnemonicParsing="false" text="Add" />
+      <Button fx:id="btnCancel" layoutX="73.0" layoutY="194.0" mnemonicParsing="false" text="Cancel" />
+      <TextField fx:id="consoleField" layoutX="73.0" layoutY="33.0" promptText="Console name" />
+      <TextField fx:id="manufacturerField" layoutX="73.0" layoutY="69.0" promptText="Manifacturer" />
+      <TextField fx:id="repairField" layoutX="73.0" layoutY="109.0" promptText="Address for repair" />
+      <DatePicker fx:id="releaseDate" layoutX="59.0" layoutY="160.0" />
+      <Label layoutX="116.0" layoutY="144.0" text="Release date" />
+   </children>
+</AnchorPane>

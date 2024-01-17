@@ -10,7 +10,7 @@ import java.util.List;
 // .IDENTITY niet efficient
 @Entity
 @Table(name = "Employee")
-public class Employee {
+public class Employee implements User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Employee_gen")
