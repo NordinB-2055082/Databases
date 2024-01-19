@@ -3,6 +3,7 @@ import be.kuleuven.dbproject.ScreenFactory;
 import be.kuleuven.dbproject.database.GameDb;
 import be.kuleuven.dbproject.model.Employee;
 import be.kuleuven.dbproject.database.EmployeeDb;
+import be.kuleuven.dbproject.model.Game;
 import be.kuleuven.dbproject.model.Museum;
 import be.kuleuven.dbproject.database.MuseumDb;
 
@@ -37,7 +38,7 @@ import javafx.scene.image.ImageView;
 
 import static java.lang.Float.parseFloat;
 
-public class DonationController{
+public class DonationController {
     //private static int currentDonationAmount;
     @FXML
     private Text textDonation;
@@ -47,17 +48,15 @@ public class DonationController{
     private Button btnMakeADonation;
     @FXML
     private TextField textFieldDonationsAmount;
-    /*@FXML
-    private Button btnGoBack;*/
+
     @FXML
-    void initialize(){
+    void initialize() {
         assert textFieldDonation != null : "fx:id=\"textDonation\" was not injected: check your FXML file 'donation.fxml'.";
         float donationNr;
 
-        try{
+        try {
             donationNr = employeeLoggedIn.getMuseum().getDonations();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             donationNr = 6789;
         }
         textFieldDonationsAmount.setText(Float.toString(donationNr));
@@ -74,27 +73,27 @@ public class DonationController{
             new ScreenFactory("base");
         });*/
     }
+
     MuseumDb museumDb = new MuseumDb();
     private Museum model;
     private DonationView view;
     private Employee employeeLoggedIn;
 
-    public DonationController(Museum model, DonationView view, Employee employeeLoggedIn){
+    public DonationController(Museum model, DonationView view, Employee employeeLoggedIn) {
         this.model = model;
         this.view = view;
         this.employeeLoggedIn = employeeLoggedIn;
     }
-    private void registerDonation(){
-        EmployeeDb employeeDb = new EmployeeDb();
+
+    private void registerDonation() {
         Museum museum = employeeLoggedIn.getMuseum();
 
         String ingevoerdeDonatie = textFieldDonation.getText();
         Float flDonatie = Float.valueOf(ingevoerdeDonatie);
-        if(flDonatie < 0){
+        if (flDonatie < 0) {
             showAlert("Warning","Voer een geldig getal in aub!");
             //textFieldDonation.setText("");
-        }
-        else{
+        } else {
             museum.setDonations(museum.getDonations() + flDonatie);
             museumDb.updateMuseum(museum);
             textFieldDonationsAmount.setText(String.valueOf(museum.getDonations()));
@@ -103,6 +102,7 @@ public class DonationController{
                             " \n \n-" + museum.getName());
         }
     }
+
     private void showAlert(String title, String content) {
         var alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);

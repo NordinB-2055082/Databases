@@ -21,6 +21,10 @@ public class GameInfoController {
     @FXML
     private Button btnBack;
     @FXML
+    private Button btnSell;
+    @FXML
+    private Button btnTurnIn;
+    @FXML
     private TextArea gameDescription;
     @FXML
     private Label gameDescriptionLabel;
@@ -33,7 +37,7 @@ public class GameInfoController {
     @FXML
     private TableColumn TableStatus;
     @FXML
-    void initialize(){
+    void initialize() {
 
         showGameInfo();
         btnLoan.setOnAction(e -> {
@@ -42,6 +46,12 @@ public class GameInfoController {
         btnBack.setOnAction(e -> {
             //new ScreenFactory("base");
             view.stop();
+        });
+        btnSell.setOnAction(e -> {
+            sellGame();
+        });
+        btnTurnIn.setOnAction(e -> {
+            turnGameIn();
         });
     }
 
@@ -57,7 +67,7 @@ public class GameInfoController {
 
         String consoleString = "";
         List<ConsoleType> consoleTypes = selectedGame.getConsoleTypesOfGame();
-        for(int i = 0; i<consoleTypes.size(); i++){
+        for (int i = 0; i < consoleTypes.size(); i++) {
             consoleString = consoleString + consoleTypes.get(i).getName() + " ";
         }
         Label ConsoleLabel = new Label("Console: " + consoleString);
@@ -92,18 +102,51 @@ public class GameInfoController {
         return gamecopies;
     }
 
-    private void loanGame(){
+    private void loanGame() {
         GameCopyDb gameCopyDb = new GameCopyDb();
         GameCopy selectedCopy = GameCopyTable.getSelectionModel().getSelectedItem();
-        selectedCopy.setStatus(Status.LENT_OUT);
-        gameCopyDb.updateGameCopy(selectedCopy);
-
+        if (selectedCopy.getStatus() == Status.AVAILABLE) {
+            selectedCopy.setStatus(Status.LENT_OUT);
+            gameCopyDb.updateGameCopy(selectedCopy);
+        }
         //update table
         List<GameCopy> gamecopies = gameCopyDb.findGameCopyByGame(selectedGame);
         ObservableList<GameCopy> data = FXCollections.observableArrayList();
         TableLocation.setCellValueFactory(new PropertyValueFactory<GameCopy, String>("museum"));
         TableStatus.setCellValueFactory(new PropertyValueFactory<GameCopy, Status>("status"));
+        data.addAll(gamecopies);
 
+        GameCopyTable.setItems(data);
+    }
+
+    private void sellGame() {
+        GameCopyDb gameCopyDb = new GameCopyDb();
+        GameCopy selectedCopy = GameCopyTable.getSelectionModel().getSelectedItem();
+        if (selectedCopy.getStatus() == Status.AVAILABLE) {
+            selectedCopy.setStatus(Status.SOLD);
+            gameCopyDb.updateGameCopy(selectedCopy);
+        }
+        List<GameCopy> gamecopies = gameCopyDb.findGameCopyByGame(selectedGame);
+        ObservableList<GameCopy> data = FXCollections.observableArrayList();
+        TableLocation.setCellValueFactory(new PropertyValueFactory<GameCopy, String>("museum"));
+        TableStatus.setCellValueFactory(new PropertyValueFactory<GameCopy, Status>("status"));
+        data.addAll(gamecopies);
+
+        GameCopyTable.setItems(data);
+    }
+
+    private void turnGameIn() {
+        GameCopyDb gameCopyDb = new GameCopyDb();
+        GameCopy selectedCopy = GameCopyTable.getSelectionModel().getSelectedItem();
+        if (selectedCopy.getStatus() == Status.SOLD || selectedCopy.getStatus() == Status.LENT_OUT) {
+            selectedCopy.setStatus(Status.AVAILABLE);
+            gameCopyDb.updateGameCopy(selectedCopy);
+
+        }
+        List<GameCopy> gamecopies = gameCopyDb.findGameCopyByGame(selectedGame);
+        ObservableList<GameCopy> data = FXCollections.observableArrayList();
+        TableLocation.setCellValueFactory(new PropertyValueFactory<GameCopy, String>("museum"));
+        TableStatus.setCellValueFactory(new PropertyValueFactory<GameCopy, Status>("status"));
         data.addAll(gamecopies);
 
         GameCopyTable.setItems(data);
