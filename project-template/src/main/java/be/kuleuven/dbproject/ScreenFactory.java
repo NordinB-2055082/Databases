@@ -50,6 +50,7 @@ public class ScreenFactory {
                 break;
             case "donation":
                 showDonationScreen();
+                break;
             case "gameInfo":
                 showGameInfoScreen();
                 break;
