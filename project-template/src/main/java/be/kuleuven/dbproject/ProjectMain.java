@@ -32,7 +32,7 @@ public class ProjectMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        makeSomeRecords();
+        //makeSomeRecords();
         Login model = new Login();
         LoginView view = new LoginView(stage, model);
         LoginController controller = new LoginController(model, view);
