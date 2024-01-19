@@ -134,6 +134,8 @@ public class AddGameController {
         gameDb.createGame(game);
         ConsoleType consoleType = (ConsoleType) SelectorConsole.getSelectionModel().getSelectedItem();
         consoleType.getGamesOfConsoleType().add(game);
+        game.getConsoleTypesOfGame().add(consoleType);
+        consoleTypeDb.updateConsoleType(consoleType);
         return game;
     }
 

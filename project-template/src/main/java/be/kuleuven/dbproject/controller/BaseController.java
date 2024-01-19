@@ -138,14 +138,17 @@ public class BaseController {
 
         //Update by console
         ConsoleType console = (ConsoleType) selectorConsole.getSelectionModel().getSelectedItem();
-
         if(selectorConsole.getValue() != null){
             for(int i = 0; i< gameList.size();i++){
-                if(!gameList.get(i).getConsoleTypesOfGame().contains(console)){
+                System.out.println(console + " compared with: " + gameList.get(i).getConsoleTypesOfGame());
+                if(!gameHasConsole(gameList.get(i), console)){
                     gameList.remove(i);
+                    i--;
                 }
             }
         }
+
+
 
         GameCopyDb gameCopyDb = new GameCopyDb();
         Museum museum = (Museum) selectorMuseum.getSelectionModel().getSelectedItem();
@@ -162,6 +165,16 @@ public class BaseController {
         ObservableList<Game> data = FXCollections.observableArrayList();
         data.addAll(gameList);
         tableAllGames.setItems(data);
+    }
+
+    private boolean gameHasConsole(Game game,ConsoleType console){
+        List<ConsoleType> consoleTypes = game.getConsoleTypesOfGame();
+        for(int i = 0; i< consoleTypes.size(); i++){
+            if(consoleTypes.get(i).getName().equals(console.getName())){
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean museumContainsGame(Museum museum, Game game){

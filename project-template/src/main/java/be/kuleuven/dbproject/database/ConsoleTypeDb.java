@@ -46,13 +46,13 @@ public class ConsoleTypeDb {
         entityManager.getTransaction().commit();
     }
 
-    public void updateEmployee(Employee consoleType) {
+    public void updateConsoleType(ConsoleType consoleType) {
         entityManager.getTransaction().begin();
         entityManager.merge(consoleType);
         entityManager.getTransaction().commit();
     }
 
-    public void deleteEmployee(ConsoleType consoleType) {
+    public void deleteConsoleType(ConsoleType consoleType) {
         entityManager.getTransaction().begin();
         entityManager.remove(consoleType);
         entityManager.getTransaction().commit();
