@@ -116,13 +116,6 @@ public class Museum {
     }
     @Override
     public String toString() {
-        return "Museum{" +
-                "museumId=" + museumId +
-                ", name='" + name + '\'' +
-                ", location='" + location + '\'' +
-                ", visitorsPerYear=" + visitorsPerYear +
-                ", entranceFee=" + entranceFee +
-                ", donations=" + donations +
-                '}';
+        return name;
     }
 }

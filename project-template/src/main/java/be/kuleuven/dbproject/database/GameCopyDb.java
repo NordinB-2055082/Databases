@@ -6,6 +6,7 @@ import be.kuleuven.dbproject.model.GameCopy;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
 import java.util.List;
 
 public class GameCopyDb {
@@ -21,6 +22,18 @@ public class GameCopyDb {
         var root = query.from(GameCopy.class); // SELECT *
         query.where(criteriaBuilder.equal(root.get("title"), title));
 
+        try {
+            return entityManager.createQuery(query).getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public List<GameCopy> findGameCopyByGame(Game game){
+        var criteriaBuilder = entityManager.getCriteriaBuilder();
+        var query = criteriaBuilder.createQuery(GameCopy.class); // SELECT .... FROM Employee
+        var root = query.from(GameCopy.class); // SELECT *
+        query.where(criteriaBuilder.equal(root.get("game"), game));
         try {
             return entityManager.createQuery(query).getResultList();
         } catch (NoResultException e) {
@@ -44,7 +57,17 @@ public class GameCopyDb {
     public void createGameCopy(GameCopy gameCopy) {
         entityManager.getTransaction().begin();
         entityManager.persist(gameCopy);
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.getTransaction().commit();
+        }
+        catch(PersistenceException e){
+            e.printStackTrace();
+            Throwable cause = e.getCause();
+            while (cause != null) {
+                System.err.println("Cause P: " + cause);
+                cause = cause.getCause();
+            }
+        }
     }
 
 

@@ -56,14 +56,15 @@ public class ScreenFactory {
             case "addGame":
                 showAddGameScreen();
                 break;
-
+            case "console":
+                showConsoleScreen();
+                break;
         }
     }
 
     private void showAddGameScreen() {
         try {
             Stage stage = new Stage();
-
             AddGameView addgameview = new AddGameView(stage);
             AddGameController gameController = new AddGameController(addgameview, employee);
 
@@ -103,7 +104,6 @@ public class ScreenFactory {
             Stage stage = new Stage();
             BaseView baseView = new BaseView(stage);
             BaseController baseController = new BaseController(baseView, employee);
-
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("base.fxml"));
             fxmlLoader.setController(baseController);
             Parent root = fxmlLoader.load();
@@ -153,15 +153,31 @@ public class ScreenFactory {
     private void showGameInfoScreen(){
         try {
             Stage stage = new Stage();
-            GameInfo gameInfoModel = new GameInfo();
-            GameInfoView gameInfoView = new GameInfoView(stage, gameInfoModel);
-            GameInfoController gameInfoController = new GameInfoController(gameInfoModel, gameInfoView, selectedGame);
+            GameInfoView gameInfoView = new GameInfoView(stage);
+            GameInfoController gameInfoController = new GameInfoController(gameInfoView, selectedGame);
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("GameInfo.fxml"));
             fxmlLoader.setController(gameInfoController);
             Parent root = fxmlLoader.load();
             gameInfoView.setRoot(root);
             gameInfoView.start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showConsoleScreen(){
+        try {
+            Stage stage = new Stage();
+            ConsoleView consoleView = new ConsoleView(stage);
+            ConsoleController consoleController = new ConsoleController(consoleView, employee);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Console.fxml"));
+            fxmlLoader.setController(consoleController);
+            Parent root = fxmlLoader.load();
+            consoleView.setRoot(root);
+            consoleView.start();
 
         } catch (IOException e) {
             e.printStackTrace();

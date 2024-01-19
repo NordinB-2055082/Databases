@@ -56,7 +56,7 @@ public class ProjectMain extends Application {
         ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
         GameCopyDb gameCopyDb = new GameCopyDb();
         ClientDb clientDb = new ClientDb();
-        TransactionDb transactionDb = new TransactionDb();
+        //TransactionDb transactionDb = new TransactionDb();
 
         Museum museumHasselt = new Museum();
         museumHasselt.setLocation("Hasselt");
@@ -158,6 +158,12 @@ public class ProjectMain extends Application {
         System.out.println("ConsoleTypesOfGame: " + marioB.getConsoleTypesOfGame());
         System.out.println("GamesOfConsoleType: " + nds.getGamesOfConsoleType());
 
+        GameCopy mbCopy = new GameCopy();
+        mbCopy.setGame(marioB);
+        mbCopy.setMuseum(museumHasselt);
+        mbCopy.setStatus(Status.AVAILABLE);
+        gameCopyDb.createGameCopy(mbCopy);
+
         GameCopy dkCopy = new GameCopy();
         dkCopy.setGame(dk);
         dkCopy.setMuseum(museumHasselt);
@@ -188,7 +194,7 @@ public class ProjectMain extends Application {
         Client klant2 = new Client();
         klant2.setName("Laura");
         klant2.setLastname("blablabla");
-        klant2.setEmail("test@gmail.com");
+        klant2.setEmail("test2@gmail.com");
         klant2.setGender("V");
         klant2.setPassword("Geheim");
         klant2.setBirthdate(LocalDate.of(2001, 2, 3));

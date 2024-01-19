@@ -5,16 +5,18 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="FieldTitle" layoutX="43.0" layoutY="64.0" promptText="Title" />
-      <ChoiceBox fx:id="SelectorConsole" layoutX="43.0" layoutY="283.0" prefWidth="150.0" />
-      <Label layoutX="43.0" layoutY="267.0" text="Console" />
+      <TextField fx:id="FieldTitle" layoutX="43.0" layoutY="65.0" prefHeight="24.0" prefWidth="171.0" promptText="Title" />
+      <ChoiceBox fx:id="SelectorConsole" layoutX="43.0" layoutY="325.0" prefHeight="24.0" prefWidth="147.0" />
+      <Label layoutX="43.0" layoutY="307.0" text="Console" />
       <TextField fx:id="FieldDeveloper" layoutX="43.0" layoutY="104.0" promptText="Developer" />
-      <DatePicker fx:id="ReleaseDatePicker" layoutX="43.0" layoutY="325.0" promptText="Release date" />
+      <DatePicker fx:id="ReleaseDatePicker" layoutX="43.0" layoutY="271.0" promptText="Release date" />
       <TextField fx:id="FieldGenre" layoutX="43.0" layoutY="147.0" promptText="Genre" />
-      <TextArea fx:id="FieldDescription" layoutX="285.0" layoutY="65.0" prefHeight="247.0" prefWidth="280.0" promptText="Description" />
+      <TextArea fx:id="FieldDescription" layoutX="285.0" layoutY="65.0" prefHeight="206.0" prefWidth="280.0" promptText="Description" wrapText="true" />
       <TextField fx:id="FieldPrice" layoutX="43.0" layoutY="188.0" promptText="Price" />
       <Button fx:id="btnAddGame" layoutX="480.0" layoutY="325.0" mnemonicParsing="false" text="Add game" />
-      <Button fx:id="btnCancel" layoutX="285.0" layoutY="325.0" mnemonicParsing="false" text="Cancel" />
+      <Button fx:id="btnCancel" layoutX="405.0" layoutY="325.0" mnemonicParsing="false" text="Cancel" />
       <TextField fx:id="FieldAge" layoutX="43.0" layoutY="230.0" promptText="Age classification" />
+      <TextField fx:id="FieldMail" layoutX="285.0" layoutY="283.0" prefHeight="24.0" prefWidth="280.0" promptText="Client mail" />
+      <Button fx:id="btnAddConsole" layoutX="200.0" layoutY="325.0" mnemonicParsing="false" text="Add Console" />
    </children>
 </AnchorPane>

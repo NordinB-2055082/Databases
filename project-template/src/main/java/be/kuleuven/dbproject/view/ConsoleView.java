@@ -1,20 +1,19 @@
 package be.kuleuven.dbproject.view;
 
-import be.kuleuven.dbproject.model.GameInfo;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.Parent;
 
-public class GameInfoView extends Stage {
+public class ConsoleView extends Stage{
     private Stage stage;
     private Scene scene;
 
-    public GameInfoView(Stage stage){
+    public ConsoleView(Stage stage){
         this.stage = stage;
     }
 
     public void start(){
-        stage.setTitle("Game information");
+        stage.setTitle("Add Console");
         stage.setResizable(false);
         stage.show();
     }

@@ -1,19 +1,16 @@
 package be.kuleuven.dbproject.controller;
 
 import be.kuleuven.dbproject.ScreenFactory;
-import be.kuleuven.dbproject.database.ConsoleTypeDb;
-import be.kuleuven.dbproject.database.GameDb;
-import be.kuleuven.dbproject.model.ConsoleType;
-import be.kuleuven.dbproject.model.Employee;
-import be.kuleuven.dbproject.model.Game;
+import be.kuleuven.dbproject.database.*;
+import be.kuleuven.dbproject.model.*;
 import be.kuleuven.dbproject.view.AddGameView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.StringConverter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class AddGameController {
@@ -35,7 +32,11 @@ public class AddGameController {
     @javafx.fxml.FXML
     private TextField FieldPrice;
     @javafx.fxml.FXML
+    private TextField FieldMail;
+    @javafx.fxml.FXML
     private Button btnAddGame;
+    @FXML
+    private Button btnAddConsole;
     @FXML
     private Button btnCancel;
 
@@ -43,12 +44,16 @@ public class AddGameController {
     void initialize(){
         loadSelector();
         btnCancel.setOnAction(e -> {
-            new ScreenFactory("base");
+            new ScreenFactory("base", employee);
             view.stop();
         });
         btnAddGame.setOnAction(e -> {
             addGame();
-            new ScreenFactory("base");
+            new ScreenFactory("base", employee);
+            view.stop();
+        });
+        btnAddConsole.setOnAction(e -> {
+            new ScreenFactory("console", employee);
             view.stop();
         });
     }
@@ -80,10 +85,45 @@ public class AddGameController {
 
     private void addGame(){
         GameDb gameDb = new GameDb();
+        Game game;
+        ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
+        // check if game already exists, else adds game with new information
+        try{
+            game = gameDb.findGameByTitle(FieldTitle.getText()).get(0);
+        }
+        catch(IndexOutOfBoundsException e){
+            game = createGame();
+        }
+
+        ClientDb clientDb = new ClientDb();
+
+        //TransactionDb transactionDb = new TransactionDb();
+        //Transaction transaction = new Transaction();
+        //transaction.setClient(clientDb.findClientByEmail(FieldMail.getText()));
+        //transaction.setDate(LocalDate.now());
+
+        //Create Gamecopy
+        GameCopyDb gamecopyDb = new GameCopyDb();
+        GameCopy gamecopy = new GameCopy();
+        gamecopy.setGame(game);
+        gamecopy.setMuseum(employee.getMuseum());
+        gamecopy.setStatus(Status.AVAILABLE);
+        //gamecopy.setTransaction(transaction);
+
+        //transaction.getGameCopiesInTransaction().add(gamecopy);
+        //System.out.println(transaction.getGameCopiesInTransaction().get(0));
+        //add to DB
+        //transactionDb.createTransaction(transaction);
+        gamecopyDb.createGameCopy(gamecopy);
+
+
+    }
+
+    private Game createGame(){
+        GameDb gameDb = new GameDb();
+        ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
 
         Game game = new Game();
-        //game.setGameId(gameDb.getHighestID()+1);
-        System.out.println("ooooohhhhh"+gameDb.getHighestID()+1);
         game.setTitle(FieldTitle.getText());
         game.setDescription(FieldDescription.getText());
         game.setGenre(FieldGenre.getText());
@@ -92,5 +132,9 @@ public class AddGameController {
         game.setAgeClassification(Integer.parseInt(FieldAge.getText()));
         game.setReleaseDate(ReleaseDatePicker.getValue());
         gameDb.createGame(game);
+        ConsoleType consoleType = (ConsoleType) SelectorConsole.getSelectionModel().getSelectedItem();
+        consoleType.getGamesOfConsoleType().add(game);
+        return game;
     }
+
 }
