@@ -13,7 +13,7 @@ public class Transaction {
     @SequenceGenerator(name = "Transaction_gen", sequenceName = "Transaction_seq")
     @Column(name = "transactionId", nullable = false)
     private Long transactionId;
-
+    /*
     @Column(name = "date", nullable = false)
     private LocalDate date;
 
@@ -57,4 +57,5 @@ public class Transaction {
     public void setGameCopiesInTransaction(List<GameCopy> gameCopiesInTransaction) {
         this.gameCopiesInTransaction = gameCopiesInTransaction;
     }
+    */
 }

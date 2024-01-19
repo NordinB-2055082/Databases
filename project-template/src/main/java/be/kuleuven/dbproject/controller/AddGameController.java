@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.util.StringConverter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class AddGameController {
 
@@ -85,28 +86,21 @@ public class AddGameController {
     private void addGame(){
         GameDb gameDb = new GameDb();
         Game game;
+        ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
         // check if game already exists, else adds game with new information
         try{
             game = gameDb.findGameByTitle(FieldTitle.getText()).get(0);
         }
         catch(IndexOutOfBoundsException e){
-            game = new Game();
-            game.setTitle(FieldTitle.getText());
-            game.setDescription(FieldDescription.getText());
-            game.setGenre(FieldGenre.getText());
-            game.setDeveloper(FieldDeveloper.getText());
-            game.setPrice(Float.parseFloat(FieldPrice.getText()));
-            game.setAgeClassification(Integer.parseInt(FieldAge.getText()));
-            game.setReleaseDate(ReleaseDatePicker.getValue());
-            gameDb.createGame(game);
+            game = createGame();
         }
 
         ClientDb clientDb = new ClientDb();
 
-        TransactionDb transactionDb = new TransactionDb();
-        Transaction transaction = new Transaction();
-        transaction.setClient(clientDb.findClientByEmail(FieldMail.getText()));
-        transaction.setDate(LocalDate.now());
+        //TransactionDb transactionDb = new TransactionDb();
+        //Transaction transaction = new Transaction();
+        //transaction.setClient(clientDb.findClientByEmail(FieldMail.getText()));
+        //transaction.setDate(LocalDate.now());
 
         //Create Gamecopy
         GameCopyDb gamecopyDb = new GameCopyDb();
@@ -114,17 +108,33 @@ public class AddGameController {
         gamecopy.setGame(game);
         gamecopy.setMuseum(employee.getMuseum());
         gamecopy.setStatus(Status.AVAILABLE);
-        gamecopy.setTransaction(transaction);
+        //gamecopy.setTransaction(transaction);
 
-        transaction.getGameCopiesInTransaction().add(gamecopy);
+        //transaction.getGameCopiesInTransaction().add(gamecopy);
         //System.out.println(transaction.getGameCopiesInTransaction().get(0));
         //add to DB
-        transactionDb.createTransaction(transaction);
+        //transactionDb.createTransaction(transaction);
         gamecopyDb.createGameCopy(gamecopy);
 
-        //TODO: probleem met onetomany constraint oplossen
 
+    }
 
+    private Game createGame(){
+        GameDb gameDb = new GameDb();
+        ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
+
+        Game game = new Game();
+        game.setTitle(FieldTitle.getText());
+        game.setDescription(FieldDescription.getText());
+        game.setGenre(FieldGenre.getText());
+        game.setDeveloper(FieldDeveloper.getText());
+        game.setPrice(Float.parseFloat(FieldPrice.getText()));
+        game.setAgeClassification(Integer.parseInt(FieldAge.getText()));
+        game.setReleaseDate(ReleaseDatePicker.getValue());
+        gameDb.createGame(game);
+        ConsoleType consoleType = (ConsoleType) SelectorConsole.getSelectionModel().getSelectedItem();
+        consoleType.getGamesOfConsoleType().add(game);
+        return game;
     }
 
 }

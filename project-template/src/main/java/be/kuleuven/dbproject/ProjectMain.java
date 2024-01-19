@@ -56,7 +56,7 @@ public class ProjectMain extends Application {
         ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
         GameCopyDb gameCopyDb = new GameCopyDb();
         ClientDb clientDb = new ClientDb();
-        TransactionDb transactionDb = new TransactionDb();
+        //TransactionDb transactionDb = new TransactionDb();
 
         Museum museumHasselt = new Museum();
         museumHasselt.setLocation("Hasselt");

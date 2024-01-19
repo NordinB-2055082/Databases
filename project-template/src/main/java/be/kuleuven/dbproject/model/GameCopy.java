@@ -22,11 +22,11 @@ public class GameCopy {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "museumId", nullable = false)
     private Museum museum;
-
+    /*
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, optional = true)
     @JoinColumn(name = "transactionId", nullable = true)
     private Transaction transaction;
-
+    */
     public GameCopy() {
         this.status = Status.AVAILABLE;
     }
@@ -36,7 +36,7 @@ public class GameCopy {
         this.museum = museum;
         this.status = Status.AVAILABLE;
     }
-
+    /*
     public Transaction getTransaction() {
         return transaction;
     }
@@ -44,7 +44,7 @@ public class GameCopy {
     public void setTransaction(Transaction transaction) {
         this.transaction = transaction;
     }
-
+    */
     public Status getStatus() {
         return status;
     }

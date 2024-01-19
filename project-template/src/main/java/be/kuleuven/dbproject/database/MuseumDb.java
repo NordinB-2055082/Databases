@@ -1,9 +1,11 @@
 package be.kuleuven.dbproject.database;
 import be.kuleuven.dbproject.EntityManagerProvider;
+import be.kuleuven.dbproject.model.Game;
 import be.kuleuven.dbproject.model.Museum;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import java.util.List;
 
 public class MuseumDb {
     private final EntityManager entityManager;
@@ -59,5 +61,15 @@ public class MuseumDb {
         entityManager.getTransaction().commit();
     }
 
+    public List<Museum> findAllMuseums() {
+        var criteriaBuilder = entityManager.getCriteriaBuilder();
+        var query = criteriaBuilder.createQuery(Museum.class);
+        var root = query.from(Museum.class);
 
+        try {
+            return entityManager.createQuery(query).getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 }

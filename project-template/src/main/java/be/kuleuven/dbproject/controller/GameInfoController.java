@@ -94,8 +94,18 @@ public class GameInfoController {
 
     private void loanGame(){
         GameCopyDb gameCopyDb = new GameCopyDb();
-        GameCopy selectedGame = GameCopyTable.getSelectionModel().getSelectedItem();
-        selectedGame.setStatus(Status.LENT_OUT);
-        gameCopyDb.updateGameCopy(selectedGame);
+        GameCopy selectedCopy = GameCopyTable.getSelectionModel().getSelectedItem();
+        selectedCopy.setStatus(Status.LENT_OUT);
+        gameCopyDb.updateGameCopy(selectedCopy);
+
+        //update table
+        List<GameCopy> gamecopies = gameCopyDb.findGameCopyByGame(selectedGame);
+        ObservableList<GameCopy> data = FXCollections.observableArrayList();
+        TableLocation.setCellValueFactory(new PropertyValueFactory<GameCopy, String>("museum"));
+        TableStatus.setCellValueFactory(new PropertyValueFactory<GameCopy, Status>("status"));
+
+        data.addAll(gamecopies);
+
+        GameCopyTable.setItems(data);
     }
 }
