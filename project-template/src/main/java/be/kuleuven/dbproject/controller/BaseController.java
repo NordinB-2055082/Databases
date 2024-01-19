@@ -151,15 +151,27 @@ public class BaseController {
         Museum museum = (Museum) selectorMuseum.getSelectionModel().getSelectedItem();
         if(selectorMuseum.getValue() != null){
             for(int j = 0; j< gameList.size();j++){
-                List gameCopies = gameCopyDb.findGameCopyByGame(gameList.get(j));
-                if(!museum.getGameCopiesOfMuseum().contains(gameCopies)){
+                if(!museumContainsGame(museum, gameList.get(j))){
                     gameList.remove(j);
+                    j--;
                 }
+
             }
         }
 
         ObservableList<Game> data = FXCollections.observableArrayList();
         data.addAll(gameList);
         tableAllGames.setItems(data);
+    }
+
+    private boolean museumContainsGame(Museum museum, Game game){
+        GameCopyDb gameCopyDb = new GameCopyDb();
+        List<GameCopy> gamecopies= gameCopyDb.findGameCopyByGame(game);
+        for(int i = 0; i< gamecopies.size(); i++){
+            if(gamecopies.get(i).getMuseum().getName().equals(museum.getName())){
+                return true;
+            }
+        }
+        return false;
     }
 }

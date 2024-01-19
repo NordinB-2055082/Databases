@@ -158,6 +158,12 @@ public class ProjectMain extends Application {
         System.out.println("ConsoleTypesOfGame: " + marioB.getConsoleTypesOfGame());
         System.out.println("GamesOfConsoleType: " + nds.getGamesOfConsoleType());
 
+        GameCopy mbCopy = new GameCopy();
+        mbCopy.setGame(marioB);
+        mbCopy.setMuseum(museumHasselt);
+        mbCopy.setStatus(Status.AVAILABLE);
+        gameCopyDb.createGameCopy(mbCopy);
+
         GameCopy dkCopy = new GameCopy();
         dkCopy.setGame(dk);
         dkCopy.setMuseum(museumHasselt);
