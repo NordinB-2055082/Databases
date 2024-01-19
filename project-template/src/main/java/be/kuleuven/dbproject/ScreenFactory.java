@@ -36,7 +36,7 @@ public class ScreenFactory {
     }
 
     private void switchScreen() {
-        switch (screenName){
+        switch (screenName) {
             case "login":
                 showLoginScreen();
                 break;
@@ -73,28 +73,25 @@ public class ScreenFactory {
             Parent root = fxmlLoader.load();
             addgameview.setRoot(root);
             addgameview.start();
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private void showDonationScreen() {
-        try{
+        try {
             Stage stage = new Stage();
             Museum model = new Museum();
 
             DonationView donationView = new DonationView(stage);
             DonationController donationController = new DonationController(model, donationView, employee);
-            //DonationController donationController = new DonationController(donationView, employee);
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("donation.fxml"));
             fxmlLoader.setController(donationController);
             Parent root = fxmlLoader.load();
             donationView.setRoot(root);
             donationView.start();
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -150,7 +147,7 @@ public class ScreenFactory {
         }
     }
 
-    private void showGameInfoScreen(){
+    private void showGameInfoScreen() {
         try {
             Stage stage = new Stage();
             GameInfoView gameInfoView = new GameInfoView(stage);
@@ -167,7 +164,7 @@ public class ScreenFactory {
         }
     }
 
-    private void showConsoleScreen(){
+    private void showConsoleScreen() {
         try {
             Stage stage = new Stage();
             ConsoleView consoleView = new ConsoleView(stage);
