@@ -52,6 +52,8 @@ public class BaseController {
     private ChoiceBox selectorConsole;
     @FXML
     private ChoiceBox selectorMuseum;
+    @FXML
+    private Button btnReset;
 
     @FXML
     void initialize() {
@@ -84,6 +86,11 @@ public class BaseController {
         selectorMuseum.setOnAction(e -> {
             updateTable();
         });
+        btnReset.setOnAction(e -> {
+            selectorConsole.setValue(null);
+            selectorMuseum.setValue(null);
+            showGames();
+        });
     }
 
     private void showGames() {
@@ -105,6 +112,7 @@ public class BaseController {
 
         ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
         ObservableList<ConsoleType> consoleTypes = FXCollections.observableList(consoleTypeDb.getAllConsoleTypes());
+
         selectorConsole.setItems(consoleTypes);
 
         MuseumDb museumDb = new MuseumDb();

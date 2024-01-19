@@ -49,5 +49,6 @@
       <ChoiceBox fx:id="selectorMuseum" layoutX="574.0" layoutY="446.0" prefWidth="150.0" />
       <Label layoutX="578.0" layoutY="376.0" text="Select by console" />
       <Label layoutX="575.0" layoutY="430.0" text="Select by museum" />
+      <Button fx:id="btnReset" layoutX="578.0" layoutY="491.0" mnemonicParsing="false" text="Reset selection" />
     </children>
 </AnchorPane>
