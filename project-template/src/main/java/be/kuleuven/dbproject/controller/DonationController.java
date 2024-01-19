@@ -1,4 +1,5 @@
 package be.kuleuven.dbproject.controller;
+
 import be.kuleuven.dbproject.ScreenFactory;
 import be.kuleuven.dbproject.database.GameDb;
 import be.kuleuven.dbproject.model.Employee;
@@ -30,6 +31,7 @@ import java.util.List;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
 import be.kuleuven.dbproject.ScreenFactory;
 
 import javafx.fxml.FXML;
@@ -91,8 +93,7 @@ public class DonationController {
         String ingevoerdeDonatie = textFieldDonation.getText();
         Float flDonatie = Float.valueOf(ingevoerdeDonatie);
         if (flDonatie < 0) {
-            showAlert("Warning","Voer een geldig getal in aub!");
-            //textFieldDonation.setText("");
+            showAlert("Warning", "Voer een geldig getal in aub!");
         } else {
             museum.setDonations(museum.getDonations() + flDonatie);
             museumDb.updateMuseum(museum);

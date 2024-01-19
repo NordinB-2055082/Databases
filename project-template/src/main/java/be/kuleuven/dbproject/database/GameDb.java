@@ -29,20 +29,6 @@ public class GameDb {
         }
     }
 
-    public Long getHighestID() {
-        var criteriaBuilder = entityManager.getCriteriaBuilder();
-        var query = criteriaBuilder.createQuery(Long.class);
-        var root = query.from(Game.class);
-
-        query.select(criteriaBuilder.max(root.get("gameId")));
-
-        try {
-            return entityManager.createQuery(query).getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
-    }
-
 
     public List<Game> findAllGames() {
         var criteriaBuilder = entityManager.getCriteriaBuilder();

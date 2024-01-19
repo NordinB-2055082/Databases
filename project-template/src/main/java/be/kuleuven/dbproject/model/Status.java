@@ -1,7 +1,7 @@
 package be.kuleuven.dbproject.model;
 
 public enum Status {
-        AVAILABLE,
-        LENT_OUT,
-        SOLD;
+    AVAILABLE,
+    LENT_OUT,
+    SOLD;
 }

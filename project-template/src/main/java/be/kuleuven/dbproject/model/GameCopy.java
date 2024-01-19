@@ -22,6 +22,7 @@ public class GameCopy {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "museumId", nullable = false)
     private Museum museum;
+
     /*
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, optional = true)
     @JoinColumn(name = "transactionId", nullable = true)

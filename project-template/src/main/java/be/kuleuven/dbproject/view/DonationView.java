@@ -7,7 +7,8 @@ public class DonationView extends Stage {
 
     private Stage stage;
     private Scene scene;
-    public DonationView(Stage stage){
+
+    public DonationView(Stage stage) {
         this.stage = stage;
     }
 
@@ -16,9 +17,11 @@ public class DonationView extends Stage {
         stage.setResizable(false);
         stage.show();
     }
+
     public void stop() {
         stage.close();
     }
+
     public void setRoot(Parent root) {
         scene = new Scene(root);
         stage.setScene(scene);

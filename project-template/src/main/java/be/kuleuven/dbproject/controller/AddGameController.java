@@ -41,7 +41,7 @@ public class AddGameController {
     private Button btnCancel;
 
     @FXML
-    void initialize(){
+    void initialize() {
         loadSelector();
         btnCancel.setOnAction(e -> {
             new ScreenFactory("base", employee);
@@ -60,12 +60,13 @@ public class AddGameController {
 
     private AddGameView view;
     private Employee employee;
+
     public AddGameController(AddGameView view, Employee employee) {
         this.view = view;
         this.employee = employee;
     }
 
-    private void loadSelector(){
+    private void loadSelector() {
         ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
         ObservableList<ConsoleType> consoleTypes = FXCollections.observableList(consoleTypeDb.getAllConsoleTypes());
         SelectorConsole.setItems(consoleTypes);
@@ -83,15 +84,14 @@ public class AddGameController {
         });
     }
 
-    private void addGame(){
+    private void addGame() {
         GameDb gameDb = new GameDb();
         Game game;
         ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
         // check if game already exists, else adds game with new information
-        try{
+        try {
             game = gameDb.findGameByTitle(FieldTitle.getText()).get(0);
-        }
-        catch(IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             game = createGame();
         }
 
@@ -119,7 +119,7 @@ public class AddGameController {
 
     }
 
-    private Game createGame(){
+    private Game createGame() {
         GameDb gameDb = new GameDb();
         ConsoleTypeDb consoleTypeDb = new ConsoleTypeDb();
 

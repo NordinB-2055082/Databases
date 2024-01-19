@@ -59,8 +59,7 @@ public class GameCopyDb {
         entityManager.persist(gameCopy);
         try {
             entityManager.getTransaction().commit();
-        }
-        catch(PersistenceException e){
+        } catch (PersistenceException e) {
             e.printStackTrace();
             Throwable cause = e.getCause();
             while (cause != null) {

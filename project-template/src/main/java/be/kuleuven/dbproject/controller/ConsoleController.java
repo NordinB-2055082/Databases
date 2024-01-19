@@ -23,8 +23,9 @@ public class ConsoleController {
     private TextField repairField;
     @FXML
     private DatePicker releaseDate;
+
     @FXML
-    public void initialize(){
+    public void initialize() {
         btnCancel.setOnAction(e -> {
             new ScreenFactory("addGame", employee);
             view.stop();
@@ -35,14 +36,16 @@ public class ConsoleController {
             view.stop();
         });
     }
+
     private ConsoleView view;
     private Employee employee;
-    public ConsoleController(ConsoleView view, Employee employee){
+
+    public ConsoleController(ConsoleView view, Employee employee) {
         this.view = view;
         this.employee = employee;
     }
 
-    private void addConsole(){
+    private void addConsole() {
         ConsoleTypeDb consoleTypedb = new ConsoleTypeDb();
         ConsoleType consoleType = new ConsoleType();
         consoleType.setName(consoleField.getText());

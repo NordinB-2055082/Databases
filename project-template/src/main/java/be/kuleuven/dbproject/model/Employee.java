@@ -10,15 +10,13 @@ import java.util.List;
 // .IDENTITY niet efficient
 @Entity
 @Table(name = "Employee")
-public class Employee implements User{
+public class Employee implements User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Employee_gen")
     @SequenceGenerator(name = "Employee_gen", sequenceName = "Employee_seq")
     @Column(name = "employeeId", nullable = false)
     private Long employeeId;
-   // @Column(name = "museumId", nullable = false)
-    //private Long museumId = 1L;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -35,11 +33,9 @@ public class Employee implements User{
     private String lastname;
 
 
-
     @ManyToOne
-    @JoinColumn(name="museumId", nullable=false)
+    @JoinColumn(name ="museumId", nullable=false)
     private Museum museum;
-
 
 
     public Long getEmployeeId() {
@@ -49,7 +45,6 @@ public class Employee implements User{
     public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
-
 
 
     public String getEmail() {
@@ -105,7 +100,6 @@ public class Employee implements User{
     public String toString() {
         return "Employee{" +
                 "employeeId=" + employeeId +
-               // ", museumId='" + museumId + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", gender='" + gender + '\'' +

@@ -20,7 +20,7 @@ public class BeheerAttachesController {
     public void initialize() {
         initTable();
         tblTips.setOnMouseClicked(e -> {
-            if(e.getClickCount() == 2 && tblTips.getSelectionModel().getSelectedItem() != null) {
+            if (e.getClickCount() == 2 && tblTips.getSelectionModel().getSelectedItem() != null) {
                 var selectedRow = (List<String>) tblTips.getSelectionModel().getSelectedItem();
                 runResource(selectedRow.get(2));
             }
@@ -45,9 +45,9 @@ public class BeheerAttachesController {
 
             var process = new ProcessBuilder();
 
-            if(isWindows()) {
+            if (isWindows()) {
                 process.command("cmd.exe", "/c", "start " + path.toRealPath().toString());
-            } else if(isMac()) {
+            } else if (isMac()) {
                 process.command("open", path.toRealPath().toString());
             } else {
                 throw new RuntimeException("Ik ken uw OS niet jong");
@@ -65,7 +65,7 @@ public class BeheerAttachesController {
 
         // TODO zijn dit de juiste kolommen?
         int colIndex = 0;
-        for(var colName : new String[]{"Attach beschrijving", "Grootte in KB", "Handle"}) {
+        for (var colName : new String[]{"Attach beschrijving", "Grootte in KB", "Handle"}) {
             TableColumn<ObservableList<String>, String> col = new TableColumn<>(colName);
             final int finalColIndex = colIndex;
             col.setCellValueFactory(f -> new ReadOnlyObjectWrapper<>(f.getValue().get(finalColIndex)));

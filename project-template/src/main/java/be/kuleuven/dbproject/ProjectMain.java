@@ -49,7 +49,7 @@ public class ProjectMain extends Application {
         launch();
     }
 
-    private void makeSomeRecords(){
+    private void makeSomeRecords() {
         MuseumDb museumDb = new MuseumDb();
         EmployeeDb employeeDb = new EmployeeDb();
         GameDb gameDb = new GameDb();
@@ -87,12 +87,12 @@ public class ProjectMain extends Application {
 
         //NOG AANPASSEN NAAR HASSELT IPV A
         Employee employeeHasselt = new Employee();
-        employeeHasselt.setName("a");
-        employeeHasselt.setLastname("a");
-        employeeHasselt.setPassword("a");
+        employeeHasselt.setName("Hasselt");
+        employeeHasselt.setLastname("Hasselt");
+        employeeHasselt.setPassword("Hasselt");
         employeeHasselt.setMuseum(museumHasselt);
         employeeHasselt.setGender("M");
-        employeeHasselt.setEmail("a");
+        employeeHasselt.setEmail("Hasselt");
 
         employeeDb.createEmployee(employeeHasselt);
 
@@ -111,14 +111,12 @@ public class ProjectMain extends Application {
         snes.setManufacturer("Nintendo");
         snes.setAddressForRepairing("ergens bij nintendo");
         snes.setReleaseDate(LocalDate.of(1993, 8, 30));
-        //consoleTypeDb.createConsoleType(snes);
 
         ConsoleType nds = new ConsoleType();
         nds.setName("Nintendo DS");
         nds.setManufacturer("Nintendo");
         nds.setAddressForRepairing("ergens bij nintendo");
         nds.setReleaseDate(LocalDate.of(2004, 11, 21));
-        //consoleTypeDb.createConsoleType(nds);
 
         Game marioB = new Game();
         marioB.setTitle("Super Mario Bros");
@@ -128,8 +126,6 @@ public class ProjectMain extends Application {
         marioB.setPrice(60.0F);
         marioB.setDeveloper("Nintendo");
         marioB.setReleaseDate(LocalDate.of(1981, 7, 9));
-        //gameDb.createGame(marioB);
-
 
 
         Game dk = new Game();
@@ -177,7 +173,6 @@ public class ProjectMain extends Application {
         dkCopyAntwerpen.setMuseum(museumAntwerpen);
         dkCopyAntwerpen.setStatus(Status.AVAILABLE);
         gameCopyDb.createGameCopy(dkCopyAntwerpen);
-
 
 
         System.out.println("gameCopies van hasselt" + museumHasselt.getGameCopiesOfMuseum());

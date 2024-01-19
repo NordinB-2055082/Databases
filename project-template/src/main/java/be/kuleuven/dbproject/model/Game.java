@@ -33,21 +33,18 @@ public class Game {
     private float price;
 
 
-   /*
-    @ManyToMany(mappedBy = "gamesOfConsoleType") //https://www.baeldung.com/hibernate-many-to-many
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<ConsoleType> consoleTypesOfGame;
-*/
-   @ManyToMany(cascade = CascadeType.ALL)
-   private List<ConsoleType> consoleTypesOfGame;
 
-   @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
-   private List<GameCopy> gameCopies;
+    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
+    private List<GameCopy> gameCopies;
 
-   // Constructors, getters, setters
-   public Game() {
-       consoleTypesOfGame = new ArrayList<>();
-       gameCopies = new ArrayList<>();
-   }
+    // Constructors, getters, setters
+    public Game() {
+        consoleTypesOfGame = new ArrayList<>();
+        gameCopies = new ArrayList<>();
+    }
+
     public Game(Long gameId, String title, String developer, String genre, String description, int ageClassification, LocalDate releaseDate, float price) {
         consoleTypesOfGame = new ArrayList<>();
         gameCopies = new ArrayList<>();

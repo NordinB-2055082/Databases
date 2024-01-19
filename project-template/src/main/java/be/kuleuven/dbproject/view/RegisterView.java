@@ -12,21 +12,22 @@ public class RegisterView extends Stage {
     private Register registerModel;
     private Scene scene;
 
-    public RegisterView(Stage stage, Register registerModel){
+    public RegisterView(Stage stage, Register registerModel) {
         this.stage = stage;
-        this.registerModel= registerModel;
+        this.registerModel = registerModel;
     }
 
-    public void start(){
-            stage.setTitle("VGHF Museum");
-            stage.setResizable(false);
-            stage.show();
+    public void start() {
+        stage.setTitle("VGHF Museum");
+        stage.setResizable(false);
+        stage.show();
     }
+
     public void stop() {
         stage.close();
     }
 
-    public void setRoot(Parent root){
+    public void setRoot(Parent root) {
         scene = new Scene(root);
         stage.setScene(scene);
     }

@@ -36,6 +36,7 @@ public class GameInfoController {
     private TableColumn TableLocation;
     @FXML
     private TableColumn TableStatus;
+
     @FXML
     void initialize() {
 
@@ -96,7 +97,7 @@ public class GameInfoController {
         this.selectedGame = selectedGame;
     }
 
-    private List<GameCopy> getGameCopies(String title){
+    private List<GameCopy> getGameCopies(String title) {
         GameCopyDb gameCopyDb = new GameCopyDb();
         List<GameCopy> gamecopies = gameCopyDb.findGameCopyByTitle(title);
         return gamecopies;

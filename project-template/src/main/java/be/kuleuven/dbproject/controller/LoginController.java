@@ -4,6 +4,7 @@ package be.kuleuven.dbproject.controller;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
 import be.kuleuven.dbproject.ScreenFactory;
 
 import be.kuleuven.dbproject.database.EmployeeDb;
@@ -93,12 +94,10 @@ public class LoginController {
 
         if (employee == null) {
             showAlert("Warning!", "We hebben nog geen account gevonden met dit email adres, werk jij hier wel?");
-        }
-        else if(Objects.equals(employee.getEmail(), model.getEmail()) && Objects.equals(employee.getPassword(), model.getPassword())) {
+        } else if (Objects.equals(employee.getEmail(), model.getEmail()) && Objects.equals(employee.getPassword(), model.getPassword())) {
             new ScreenFactory("base", employee);
             view.stop();
-        }
-        else {
+        } else {
             showAlert("Warning!", "De opgegeven combinatie bestaat niet, probeer opnieuw");
         }
 

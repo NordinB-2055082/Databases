@@ -32,7 +32,7 @@ public class Museum {
     private float donations;
 
 
-    @OneToMany(mappedBy="museum")
+    @OneToMany(mappedBy = "museum")
     private List<Employee> employeesOfMuseum;
 
     @OneToMany(mappedBy = "museum")
@@ -114,6 +114,7 @@ public class Museum {
     public void setDonations(float donations) {
         this.donations = donations;
     }
+
     @Override
     public String toString() {
         return name;

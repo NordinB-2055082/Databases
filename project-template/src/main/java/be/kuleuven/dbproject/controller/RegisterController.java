@@ -75,6 +75,7 @@ public class RegisterController {
     private ChoiceBox<String> input_museum;
     @FXML
     private Text txt_museum;
+
     @FXML
     void initialize() {
         assert anchr_background != null : "fx:id=\"anchr_background\" was not injected: check your FXML file 'register.fxml'.";
@@ -158,6 +159,7 @@ public class RegisterController {
             showAlert("Warning!", "We hebben al een account gevonden met dit email adres, probeer in te loggen");
         }
     }
+
     public void showAlert(String title, String content) {
         var alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);

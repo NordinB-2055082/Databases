@@ -9,21 +9,21 @@ public class GameInfoView extends Stage {
     private Stage stage;
     private Scene scene;
 
-    public GameInfoView(Stage stage){
+    public GameInfoView(Stage stage) {
         this.stage = stage;
     }
 
-    public void start(){
+    public void start() {
         stage.setTitle("Game information");
         stage.setResizable(false);
         stage.show();
     }
 
-    public void stop(){
+    public void stop() {
         stage.close();
     }
 
-    public void setRoot(Parent root){
+    public void setRoot(Parent root) {
         scene = new Scene(root);
         stage.setScene(scene);
     }

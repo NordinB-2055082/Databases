@@ -52,26 +52,25 @@ public class BaseController {
     private ChoiceBox selectorConsole;
     @FXML
     private ChoiceBox selectorMuseum;
+
     @FXML
-    void initialize(){
+    void initialize() {
         assert tableAllGames != null : "fx:id=\"tableAllGames\" was not injected: check your FXML file 'base.fxml'.";
 
         showGames();
         btnLogOut.setOnAction(e -> {
-           new ScreenFactory("login", employeeLoggedIn);
-           view.stop();
+            new ScreenFactory("login", employeeLoggedIn);
+            view.stop();
         });
 
         btnDonation.setOnAction(e -> {
             new ScreenFactory("donation", employeeLoggedIn);
-            //view.stop();
         });
 
         btnGameSelection.setOnAction(e -> {
             Game selectedGame = tableAllGames.getSelectionModel().getSelectedItem();
-            if(selectedGame != null){
+            if (selectedGame != null) {
                 new ScreenFactory("gameInfo", employeeLoggedIn, selectedGame);
-                //view.stop();
             }
         });
 
@@ -119,7 +118,6 @@ public class BaseController {
 
             @Override
             public ConsoleType fromString(String string) {
-                // You can implement this method if needed, but for a ChoiceBox, you can usually leave it as is
                 return null;
             }
         });
@@ -127,21 +125,22 @@ public class BaseController {
 
     private BaseView view;
     private Employee employeeLoggedIn;
+
     public BaseController(BaseView view, Employee employeeLoggedIn) {
         this.view = view;
         this.employeeLoggedIn = employeeLoggedIn;
     }
 
-    private void updateTable(){
+    private void updateTable() {
         GameDb gameDb = new GameDb();
-        List<Game> gameList= gameDb.findAllGames();
+        List<Game> gameList = gameDb.findAllGames();
 
         //Update by console
         ConsoleType console = (ConsoleType) selectorConsole.getSelectionModel().getSelectedItem();
-        if(selectorConsole.getValue() != null){
-            for(int i = 0; i< gameList.size();i++){
+        if (selectorConsole.getValue() != null) {
+            for (int i = 0; i < gameList.size(); i++) {
                 System.out.println(console + " compared with: " + gameList.get(i).getConsoleTypesOfGame());
-                if(!gameHasConsole(gameList.get(i), console)){
+                if (!gameHasConsole(gameList.get(i), console)) {
                     gameList.remove(i);
                     i--;
                 }
@@ -149,12 +148,10 @@ public class BaseController {
         }
 
 
-
-        GameCopyDb gameCopyDb = new GameCopyDb();
         Museum museum = (Museum) selectorMuseum.getSelectionModel().getSelectedItem();
-        if(selectorMuseum.getValue() != null){
-            for(int j = 0; j< gameList.size();j++){
-                if(!museumContainsGame(museum, gameList.get(j))){
+        if (selectorMuseum.getValue() != null) {
+            for (int j = 0; j < gameList.size(); j++) {
+                if (!museumContainsGame(museum, gameList.get(j))) {
                     gameList.remove(j);
                     j--;
                 }
@@ -167,21 +164,21 @@ public class BaseController {
         tableAllGames.setItems(data);
     }
 
-    private boolean gameHasConsole(Game game,ConsoleType console){
+    private boolean gameHasConsole(Game game, ConsoleType console) {
         List<ConsoleType> consoleTypes = game.getConsoleTypesOfGame();
-        for(int i = 0; i< consoleTypes.size(); i++){
-            if(consoleTypes.get(i).getName().equals(console.getName())){
+        for (int i = 0; i < consoleTypes.size(); i++) {
+            if (consoleTypes.get(i).getName().equals(console.getName())) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean museumContainsGame(Museum museum, Game game){
+    private boolean museumContainsGame(Museum museum, Game game) {
         GameCopyDb gameCopyDb = new GameCopyDb();
-        List<GameCopy> gamecopies= gameCopyDb.findGameCopyByGame(game);
-        for(int i = 0; i< gamecopies.size(); i++){
-            if(gamecopies.get(i).getMuseum().getName().equals(museum.getName())){
+        List<GameCopy> gamecopies = gameCopyDb.findGameCopyByGame(game);
+        for (int i = 0; i < gamecopies.size(); i++) {
+            if (gamecopies.get(i).getMuseum().getName().equals(museum.getName())) {
                 return true;
             }
         }
